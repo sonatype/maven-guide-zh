@@ -17,9 +17,9 @@
   
   <modules>
     <module>examples</module>
-    <module>content-en</module>
+<!--    <module>content-en</module>
     <module>content-fr</module>
-    <module>content-de</module>
+    <module>content-de</module> -->
     <module>content-zh</module>
   </modules>
   
@@ -47,6 +47,32 @@
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
           <url>scp://deployer@172.16.0.1/var/www/domains/sonatype.com/books/htdocs/book-stage/parent</url>
+        </site>
+        </distributionManagement>
+    </profile>
+    <profile>
+        <id>publish-external</id>
+<!--        <properties>
+           <sonatype.site>scp://www.sonatype.com/var/www/domains/sonatype.com/books/htdocs/</sonatype.site>
+        </properties> -->
+        <distributionManagement>
+        <site>
+          <id>sonatype-site</id>
+          <name>Sonatype Book Examples</name>
+          <url>scp://deployer@svn.soantype.com/var/www/domains/sonatype.com/books/htdocs/book/parent</url>
+        </site>
+        </distributionManagement>
+    </profile>
+    <profile>
+        <id>stage-external</id>
+<!--        <properties>
+           <sonatype.site>scp://www.sonatype.com/var/www/domains/sonatype.com/books/htdocs/</sonatype.site>
+        </properties> -->
+        <distributionManagement>
+        <site>
+          <id>sonatype-site</id>
+          <name>Sonatype Book Examples</name>
+          <url>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/book-stage/parent</url>
         </site>
         </distributionManagement>
     </profile>

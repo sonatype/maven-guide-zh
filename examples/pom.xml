@@ -9,7 +9,7 @@
   
   <url>http://sonatype.com/book</url>
 
-  <modules>
+<!--  <modules>
     <module>ch03-simple</module>
     <module>ch04-custom</module>
     <module>ch05-simple-web</module>
@@ -24,7 +24,7 @@
     <module>ch15-sitegen</module>
     <module>ch17-writing-plugins</module>
     <module>ch18-alternate-plugins</module>
-  </modules>
+  </modules> -->
   
   <build>
     <finalName>mavenbook-examples-${project.version}</finalName>
@@ -69,6 +69,29 @@
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
           <url>scp://deployer@172.16.0.1/var/www/domains/sonatype.com/books/htdocs/maven-book-stage/book-examples/</url>
+        </site>
+        </distributionManagement>
+      </profile>
+      <profile>
+        <id>publish-external</id>
+        <distributionManagement>
+        <site>
+          <id>sonatype-site</id>
+          <name>Sonatype Book Examples</name>
+          <url>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/maven-book/book-examples/</url>
+        </site>
+        </distributionManagement>
+        <properties>
+           <sonatype.site>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/</sonatype.site>
+        </properties>
+      </profile>
+      <profile>
+        <id>stage-external</id>
+        <distributionManagement>
+        <site>
+          <id>sonatype-site</id>
+          <name>Sonatype Book Examples</name>
+          <url>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/maven-book-stage/book-examples/</url>
         </site>
         </distributionManagement>
       </profile>
