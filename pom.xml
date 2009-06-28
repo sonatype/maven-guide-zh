@@ -201,9 +201,9 @@
     </plugins>
   </build>
   <scm>
-    <connection>scm:git:git://github.com/sonatype/maven-guide.git</connection>
-    <url>scm:git:git://github.com/sonatype/maven-guide.git</url>
-    <developerConnection>scm:git:git://github.com/sonatype/maven-guide.git</developerConnection>	
+    <connection>scm:git:git://github.com/sonatype/maven-guide-zh.git</connection>
+    <url>scm:git:git://github.com/sonatype/maven-guide-zh.git</url>
+    <developerConnection>scm:git:git://github.com/sonatype/maven-guide-zh.git</developerConnection>	
   </scm>
   <distributionManagement>
     <repository>
