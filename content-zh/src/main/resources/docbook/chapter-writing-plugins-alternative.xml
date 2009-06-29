@@ -4,17 +4,17 @@
 <chapter id="writing-plugins-alternative">
   <title>使用可选语言编写插件</title>
 
-  <para>你可以使用Java编写Mojo，你也可以使用其它可选的语言。Maven支持了很多语言来使用插件，本章介绍如何使三种语言：Groovy,
+  <para>你可以使用Java编写Mojo，你也可以使用其它可选的语言。Maven支持了很多语言来编写插件，本章介绍如何使用三种语言：Groovy,
   Ant, 及Ruby，来编写插件。</para>
 
   <section>
     <title>使用Ant编写插件</title>
 
-    <para>Ant从某种意义上来说不是一种语言，它是一种构建工具，能让你通过一组归类成构建目标的任务来描述一个构建。Ant于是就允许你声明不同构建目标之间的依赖；比如，使用Ant你实际上是在创建自己的生命周期。一个Ant的build.xml可能会有一个install目标，它依赖于一个test目标，而后者又依赖于compile目标。Ant可以说是Maven的前辈，它是一个普遍的过程式构建工具，在Maven引入高度可重用的构建插件及全局生命周期之前，Ant几乎被所有项目使用。</para>
+    <para>Ant从某种意义上来说不是一种语言，它是一种构建工具，能让你通过一组归类成构建目标的任务来描述一个构建。Ant允许你声明不同构建目标之间的依赖；比如，使用Ant你实际上是在创建自己的生命周期。一个Ant的build.xml可能会有一个install目标，它依赖于一个test目标，而后者又依赖于compile目标。Ant可以说是Maven的前辈，它是一个普遍的过程式构建工具，在Maven引入高度可重用的构建插件及全局生命周期之前，Ant几乎被所有项目使用。</para>
 
     <para>虽然Maven比Ant进步了，但是在描述构建过程的某些部分的时候，Ant仍然十分有用。当你需要执行一些文件操作，XSLT转换，或者其它你能可能想到的操作的时候，Ant提供的一组任务便十分简洁有效。关于Ant任务有一个很大的类库，包括了几乎所有功能，运行JUnit测试，转换XML，使用SCP复制文件至远程服务器，等等。关于所有可用的Ant任务列表可以从这里查到：<ulink
     url="http://ant.apache.org/manual/tasksoverview.html">Apache Ant
-    手册</ulink>。你可以使用这些人物作为一个低级别的构建自定义语言，你也可以不用Java而是使用Ant编写一个Maven插件，你可以给一个Ant构建目标的Mojo传入参数。</para>
+    手册</ulink>。你可以使用这些任务作为一个低级别的构建自定义语言，你也可以不用Java而是使用Ant编写一个Maven插件，你可以给一个Ant构建目标的Mojo传入参数。</para>
   </section>
 
   <section>
@@ -58,7 +58,7 @@
     </example>
 
     <para>紧接着，你需要创建你的Ant Mojo。一个Ant
-    Mojo包括两个部分：XML文件中的Ant任务，以及一个提供Mojo描述符信息的文件。Ant插件工具会到<filename>${basedir}/src/main/scripts</filename>目录下寻找这些文件。这里一个文件名为echo.build.xml，包含如下的Ant
+    Mojo包括两个部分：XML文件中的Ant任务，以及一个提供Mojo描述符信息的文件。Ant插件工具会到<filename>${basedir}/src/main/scripts</filename>目录下寻找这些文件。在这里创建一个文件名为echo.build.xml，包含如下的Ant
     XML。</para>
 
     <example>
@@ -72,7 +72,7 @@
 </programlisting>
     </example>
 
-    <para>另外一个文件描述这个Echo Ant
+    <para>另外创建一个文件描述这个Echo Ant
     Mojo，同样的在<filename>${basedir}/src/main/scripts</filename>目录下，名为echo.mojos.xml。</para>
 
     <example>
@@ -138,13 +138,13 @@ echotarget:
 </screen>
 
     <para>echo目标执行后打印了默认的message参数的值。如果你习惯了Apache
-    Ant构建脚本，你会注意到Ant打印了所执行的目标的名称，并且在echo任务的输出上加了一个日志前缀。</para>
+    Ant构建脚本，你会注意到Ant打印了所执行目标的名称，并且在echo任务的输出上加了一个日志前缀。</para>
   </section>
 
   <section>
     <title>使用JRuby编写插件</title>
 
-    <para>Ruby是一种面向对象脚本语言，它为元编程（meta-programming）和反射提供了丰富的基础设施。Ruby对于closure和block的依赖使得形成了一种既紧凑又不失强大的编程风格。虽然Ruby自1993年就出现了，但大部分人了解到Ruby是在基于Ruby的web框架，Ruby
+    <para>Ruby是一种面向对象脚本语言，它为元编程（meta-programming）和反射提供了丰富的基础设施。Ruby对于closure和block的使用造就了一种既紧凑又不失强大的编程风格。虽然Ruby自1993年就出现了，但大部分人了解到Ruby是在基于Ruby的web框架，Ruby
     on Rails流行之后。JRuby是用Java编写的Ruby解析器。要了解更多的关于Ruby语言的信息，可参考<ulink
     url="http://www.ruby-lang.org/">http://www.ruby-lang.org/</ulink>，而关于JRuby，可参考<ulink
     url="http://jruby.codehaus.org/">http://jruby.codehaus.org/</ulink>。</para>
@@ -250,7 +250,7 @@ run_mojo Echo
       <title>Ruby Mojo实现</title>
 
       <para>Ruby
-      Mojo在源文件中使用注释进行注解。一个单独的注解如@parameter可以接受很多属性，而每个属性都必须在同一行中指定。注解属性之间不能有换行符。类和参数都可以被注解。关于参数可以使用四种注解：@parameter,
+      Mojo在源文件中使用注释进行注解。一个单独的注解如@parameter可以接受很多属性，而多个属性都必须在同一行中指定。注解属性之间不能有换行符。类和参数都可以被注解。关于参数可以使用四种注解：@parameter,
       @required, @readonly, 和@deprecated。@parameter注解接受如下的属性：</para>
 
       <variablelist>
@@ -266,7 +266,7 @@ run_mojo Echo
           <term>default-value</term>
 
           <listitem>
-            <para>如果该参数被提供的值或者参数表达式的结果是null，就使用该缺省值。在echo.rb中，我们指定了缺省值为"Hello
+            <para>如果参数被提供的值或者参数表达式的结果是null，就使用该缺省值。在echo.rb中，我们指定了缺省值为"Hello
             Maven World"。</para>
           </listitem>
         </varlistentry>
@@ -407,7 +407,7 @@ class CustomMojo &lt; Mojo
    ...
 end</programlisting>
 
-      <para>Mojo参数可以引用Java类和Maven属性。下面的例子展示了如果从Ruby
+      <para>Mojo参数可以引用Java类和Maven属性。下面的例子展示了如何从Ruby
       Mojo访问MavenProject对象。</para>
 
       <example>
