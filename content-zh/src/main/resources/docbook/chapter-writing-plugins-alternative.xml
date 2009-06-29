@@ -2,52 +2,28 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <chapter id="writing-plugins-alternative">
-  <title>Writing Plugins in Alternative Languages</title>
+  <title>使用可选语言编写插件</title>
 
-  <para>You can write a Mojo in Java, or you can write a Mojo in an
-  alternative language. Maven has support for a number of implementation
-  languages, and this chapter is going show you how to create plugins in three
-  languages: Groovy, Ant, and Ruby plugins.</para>
+  <para>你可以使用Java编写Mojo，你也可以使用其它可选的语言。Maven支持了很多语言来使用插件，本章介绍如何使三种语言：Groovy,
+  Ant, 及Ruby，来编写插件。</para>
 
   <section>
-    <title>Writing Plugins in Ant</title>
+    <title>使用Ant编写插件</title>
 
-    <para>Ant isn't a language as much as it is a build tool which allows you
-    to describe a build as a set of tasks grouped into build targets. Ant then
-    allows you to declare dependencies between build targets; for example, in
-    Ant you are essentially creating your own lifecycle. An Ant
-    <filename>build.xml</filename> might have an install target which depends
-    on a test target which depends on a compile target. Ant is something of a
-    ancestor to Maven, it was the ubiquitous procedural build tool that almost
-    every project used before Maven introduced the concept of wide-scale
-    reusability of common build plugins and the concept of a universal
-    lifecycle.</para>
+    <para>Ant从某种意义上来说不是一种语言，它是一种构建工具，能让你通过一组归类成构建目标的任务来描述一个构建。Ant于是就允许你声明不同构建目标之间的依赖；比如，使用Ant你实际上是在创建自己的生命周期。一个Ant的build.xml可能会有一个install目标，它依赖于一个test目标，而后者又依赖于compile目标。Ant可以说是Maven的前辈，它是一个普遍的过程式构建工具，在Maven引入高度可重用的构建插件及全局生命周期之前，Ant几乎被所有项目使用。</para>
 
-    <para>While Maven is an improvement on Ant, Ant can still be useful when
-    describing parts of the build process. Ant provides a set of tasks which
-    can come in handy when you need to perform file operations or
-    <acronym>XSLT</acronym> transformations or any other operation you could
-    think of. There is a large library of available Ant tasks for everything
-    from running JUnit tests to transforming <acronym>XML</acronym> to copying
-    files to a remote server using <acronym>SCP</acronym>. An overview of
-    available Ant tasks can be found online in the <ulink
+    <para>虽然Maven比Ant进步了，但是在描述构建过程的某些部分的时候，Ant仍然十分有用。当你需要执行一些文件操作，XSLT转换，或者其它你能可能想到的操作的时候，Ant提供的一组任务便十分简洁有效。关于Ant任务有一个很大的类库，包括了几乎所有功能，运行JUnit测试，转换XML，使用SCP复制文件至远程服务器，等等。关于所有可用的Ant任务列表可以从这里查到：<ulink
     url="http://ant.apache.org/manual/tasksoverview.html">Apache Ant
-    Manual</ulink>. You can use these tasks as a low-level build customization
-    language, and you can also write a Maven plugin where, instead of a Mojo
-    written in Java, you can pass parameters to a Mojo which is an Ant build
-    target.</para>
+    手册</ulink>。你可以使用这些人物作为一个低级别的构建自定义语言，你也可以不用Java而是使用Ant编写一个Maven插件，你可以给一个Ant构建目标的Mojo传入参数。</para>
   </section>
 
   <section>
-    <title>Creating an Ant Plugin</title>
+    <title>创建一个Ant插件</title>
 
-    <para>To create a Maven plugin using Ant, you will need to have a pom.xml
-    and a single Mojo implemented in Ant. To get started, create a project
-    directory named firstant-maven-plugin. Place the following pom.xml in this
-    directory.</para>
+    <para>要使用Ant创建一个Maven插件，你需要有一个pom.xml和一个使用Ant实现的Mojo。一开始，创建一个名为firstant-maven-plugin的项目目录。在该目录创建如下的pom.xml。</para>
 
     <example>
-      <title>POM for an Ant Maven Plugin</title>
+      <title>一个Ant Maven插件的POM</title>
 
       <programlisting language="xml">&lt;project&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
@@ -81,13 +57,9 @@
 &lt;/project&gt;</programlisting>
     </example>
 
-    <para>Next, you will need to create your Ant Mojo. An Ant mojo consists of
-    two parts: the Ant tasks in an <acronym>XML</acronym> file, and a file
-    which supplies Mojo descriptor information. The Ant plugin tools are going
-    to look for both of these files in
-    <filename>${basedir}/src/main/scripts</filename>. One file will be named
-    <filename>echo.build.xml</filename> and it will contain the Ant
-    <acronym>XML</acronym>.</para>
+    <para>紧接着，你需要创建你的Ant Mojo。一个Ant
+    Mojo包括两个部分：XML文件中的Ant任务，以及一个提供Mojo描述符信息的文件。Ant插件工具会到<filename>${basedir}/src/main/scripts</filename>目录下寻找这些文件。这里一个文件名为echo.build.xml，包含如下的Ant
+    XML。</para>
 
     <example>
       <title>Echo Ant Mojo</title>
@@ -100,12 +72,11 @@
 </programlisting>
     </example>
 
-    <para>The other file will describe the Echo Ant Mojo and will be in the
-    <filename>echo.mojos.xml</filename> file also in
-    <filename>${basedir}/src/main/scripts</filename>.</para>
+    <para>另外一个文件描述这个Echo Ant
+    Mojo，同样的在<filename>${basedir}/src/main/scripts</filename>目录下，名为echo.mojos.xml。</para>
 
     <example>
-      <title>Echo Ant Mojo Descriptor</title>
+      <title>Echo Ant Mojo描述符</title>
 
       <programlisting language="xml">&lt;pluginMetadata&gt;
   &lt;mojos&gt;
@@ -129,17 +100,10 @@
 &lt;/pluginMetadata&gt;</programlisting>
     </example>
 
-    <para>This <filename>echo.mojos.xml</filename> file configures the Mojo
-    descriptor for this plugin. It supplies the goal name "echo", and it tells
-    Maven what Ant task to call in the call element. In addition to
-    configuring the description, this <acronym>XML</acronym> file configures
-    the message parameter to use the expression <varname>${message}</varname>
-    and to have a default value of "Hello Maven World."</para>
+    <para>这个echo.mojos.xml文件为该插件配置Mojo描述符。它提供了一个名为"echo"的目标名称，它在call元素中告诉Maven调用哪个Ant任务。除了配置描述信息，该XML还使用表达式${message}配置了message参数，并且为此提供了一个缺省值"Hello
+    Maven World"。</para>
 
-    <para>If you've configured your plugin groups in
-    <filename>~/.m2/settings.xml</filename> to include
-    <varname>org.sonatype.mavenbook.plugins</varname>, you can install this Ant
-    plugin by executing the following command at the command-line:</para>
+    <para>如果你在~/.m2/settings.xml中配置你的插件组包含了org.sonatype.mavenbook.plugins，你就可以通过执行如下的命令安装这个Ant插件：</para>
 
     <screen>$ <command>mvn install</command>
 [INFO] ------------------------------------------------------------------------
@@ -160,9 +124,7 @@
 [INFO] ------------------------------------------------------------------------
 </screen>
 
-    <para>Note that the <varname>plugin:descriptor</varname> goal found a
-    single Ant mojo descriptor. To run this goal, you would execute the
-    following command-line:</para>
+    <para>注意plugin:descriptor目标发现了一个Ant Mojo描述符。要运行这个目标，你可以执行如下的命令：</para>
 
     <screen>$ <command>mvn firstant:echo</command>
 ...
@@ -175,38 +137,25 @@ echotarget:
 [INFO] ------------------------------------------------------------------------
 </screen>
 
-    <para>The <varname>echo</varname> goal executed and printed out the
-    default value of the <varname>message</varname> parameter. If you are used
-    to Apache Ant build scripts, you will notice that Ant prints out the name
-    of the target executed and then adds a logging prefix to the output of the
-    echo Ant task.</para>
+    <para>echo目标执行后打印了默认的message参数的值。如果你习惯了Apache
+    Ant构建脚本，你会注意到Ant打印了所执行的目标的名称，并且在echo任务的输出上加了一个日志前缀。</para>
   </section>
 
   <section>
-    <title>Writing Plugins in JRuby</title>
+    <title>使用JRuby编写插件</title>
 
-    <para>Ruby is an object-oriented scripting language which provides a rich
-    set of facilities for meta-programming and reflection. Ruby's reliance on
-    closures and blocks make for a programming style that is both compact and
-    powerful. Although Ruby has been around since 1993, most people came to
-    know Ruby after it was made popular by a Ruby-based web framework known as
-    Ruby on Rails. JRuby is a Ruby interpreter written in Java. For more
-    information about the Ruby language, see: <ulink
-    url="http://www.ruby-lang.org/">http://www.ruby-lang.org/</ulink>, and for
-    more information about JRuby, see: <ulink
-    url="http://jruby.codehaus.org/">http://jruby.codehaus.org/</ulink>.</para>
+    <para>Ruby是一种面向对象脚本语言，它为元编程（meta-programming）和反射提供了丰富的基础设施。Ruby对于closure和block的依赖使得形成了一种既紧凑又不失强大的编程风格。虽然Ruby自1993年就出现了，但大部分人了解到Ruby是在基于Ruby的web框架，Ruby
+    on Rails流行之后。JRuby是用Java编写的Ruby解析器。要了解更多的关于Ruby语言的信息，可参考<ulink
+    url="http://www.ruby-lang.org/">http://www.ruby-lang.org/</ulink>，而关于JRuby，可参考<ulink
+    url="http://jruby.codehaus.org/">http://jruby.codehaus.org/</ulink>。</para>
 
     <section>
-      <title>Creating a JRuby Plugin</title>
+      <title>创建一个JRuby插件</title>
 
-      <para>To create a Maven plugin using JRuby, you will need to have a
-      <filename>pom.xml</filename> and a single Mojo implemented in Ruby. To
-      get started, create a project directory named
-      <varname>firstruby-maven-plugin</varname>. Place the following
-      <filename>pom.xml</filename> in this directory.</para>
+      <para>要使用JRuby创建一个Maven插件，你需要一个pom.xml和一个Ruby实现的Mojo。一开始，创建一个名为firstruby-maven-plugin的项目目录，在该目录中创建如下的pom.xml。</para>
 
       <example>
-        <title>POM for a JRuby Maven Plugin</title>
+        <title>一个JRuby Maven插件的POM</title>
 
         <programlisting language="xml">&lt;project&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
@@ -241,16 +190,13 @@ echotarget:
 &lt;/project&gt;</programlisting>
       </example>
 
-      <para>Next, you will need to create a Mojo implemented in Ruby. Maven is
-      going to look for a Ruby Mojo in
-      <filename>${basedir}/src/main/scripts</filename>. Put the following Ruby
-      class in
-      <filename>${basedir}/src/main/scripts/echo.rb</filename>.</para>
+      <para>紧接着，你需要创建一个由Ruby实现的Mojo。Maven会到<filename>${basedir}/src/main/scripts</filename>目录寻找Ruby
+      Mojo。创建如下的<filename>${basedir}/src/main/scripts/echo.rb</filename>文件：</para>
 
       <example>
-        <title>The Echo Ruby Mojo</title>
+        <title>Echo Ruby Mojo</title>
 
-        <programlisting ># Prints a message
+        <programlisting># Prints a message
 # @goal "echo"
 # @phase "validate"
 class Echo &lt; Mojo
@@ -269,12 +215,8 @@ run_mojo Echo
 </programlisting>
       </example>
 
-      <para>The <classname>Echo</classname> class must extend
-      <classname>Mojo</classname>, and it must override the
-      <methodname>execute()</methodname> method. At the end of the
-      <filename>echo.rb</filename> file, you will need to run the mojo with
-      "<code>run_mojo Echo</code>". To install this plugin, run mvn
-      install:</para>
+      <para>这个Echo类必须扩展Mojo类，它必须重写execute()方法。在<filename>echo.rb</filename>文件最后，你将需要使用"run_mojo
+      Echo"运行这个mojo。要安装该插件，运行mvn install：</para>
 
       <screen>$ <command>mvn install</command>
 [INFO] Scanning for projects...
@@ -294,13 +236,8 @@ run_mojo Echo
 [INFO] ------------------------------------------------------------------------
 </screen>
 
-      <para>During the build, you should see that the Maven Plugin Plugin's
-      descriptor goal applies the JRuby extractor to create a
-      <filename>plugin.xml</filename> which captures the annotations in the
-      <classname>Echo</classname> class. If you've configured your default
-      plugin groups to include <varname>org.sonatype.mavenbook.plugins</varname>,
-      you should be able to run this echo goal with the following
-      command-line:</para>
+      <para>在构建过程中，你会看到Maven
+      Plugin插件的descriptor目标应用了JRuby萃取器(extractor)创建了一个plugin.xml文件，该文件萃取了所有Echo类的注解。如果你已经配置你默认的插件组包含了org.sonatype.plugins，你就可以使用如下的命令运行该目标：</para>
 
       <screen>$ <command>mvn firstruby:echo</command>
 ...
@@ -310,27 +247,18 @@ run_mojo Echo
     </section>
 
     <section>
-      <title>Ruby Mojo Implementations</title>
+      <title>Ruby Mojo实现</title>
 
-      <para>Ruby Mojos are annotated using comments in Ruby source files. A
-      single annotation like <classname>@parameter</classname> takes a number
-      of attributes, and each of these attributes must be specified on the
-      same line. There can be no line-breaks between an annotations attribute
-      in the Ruby source. Both classes and parameters are annotated.
-      Parameters are annotated with four annotations:
-      <classname>@parameter</classname>, <classname>@required</classname>,
-      <classname>@readonly</classname>, and
-      <classname>@deprecated</classname>. The
-      <classname>@parameter</classname> attribute takes the following
-      attributes:</para>
+      <para>Ruby
+      Mojo在源文件中使用注释进行注解。一个单独的注解如@parameter可以接受很多属性，而每个属性都必须在同一行中指定。注解属性之间不能有换行符。类和参数都可以被注解。关于参数可以使用四种注解：@parameter,
+      @required, @readonly, 和@deprecated。@parameter注解接受如下的属性：</para>
 
       <variablelist>
         <varlistentry>
           <term>alias</term>
 
           <listitem>
-            <para>An alias for the parameter. An alternate name which can be
-            used to populate the same parameter.</para>
+            <para>参数的别名。可以同样用来填充该参数的可选的名称。</para>
           </listitem>
         </varlistentry>
 
@@ -338,10 +266,8 @@ run_mojo Echo
           <term>default-value</term>
 
           <listitem>
-            <para>Provides a default value to the parameter if the supplied
-            value or the parameter expression produces a null result. In
-            <filename>echo.rb</filename>, we specify the default as "Hello
-            Maven World".</para>
+            <para>如果该参数被提供的值或者参数表达式的结果是null，就使用该缺省值。在echo.rb中，我们指定了缺省值为"Hello
+            Maven World"。</para>
           </listitem>
         </varlistentry>
 
@@ -349,8 +275,7 @@ run_mojo Echo
           <term>expression</term>
 
           <listitem>
-            <para>Contains an expression which can resolve to a Maven property
-            or a System property.</para>
+            <para>指定一个表达式，可以用来解析Maven属性或者系统属性。</para>
           </listitem>
         </varlistentry>
 
@@ -358,23 +283,19 @@ run_mojo Echo
           <term>type</term>
 
           <listitem>
-            <para>The fully qualified Java type of the parameter. If the type
-            is not specified it will default to
-            <classname>java.lang.String</classname>.</para>
+            <para>该参数的完全限定的Java类型。如果没有指定，默认值为java.lang.String。</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
-      <para>In addition to the <classname>@parameter</classname> annotation, a
-      parameter can take the following annotations:</para>
+      <para>除了@parameter注解，参数还可以使用如下的注解：</para>
 
       <variablelist>
         <varlistentry>
           <term>@required "&lt;true|false&gt;"</term>
 
           <listitem>
-            <para>Marks the parameter as being required. The default value is
-            false.</para>
+            <para>标记一个参数是否为必须的。默认值是false。</para>
           </listitem>
         </varlistentry>
 
@@ -382,9 +303,7 @@ run_mojo Echo
           <term>@readonly "&lt;true|false&gt;"</term>
 
           <listitem>
-            <para>Marks the parameter as read-only. If this is true, you may
-            not override the default value or the value from the expression
-            from the command line. The default value is false.</para>
+            <para>标记参数为只读。如果为true，你就无法从命令行覆盖默认值或者默认表达式的值。这里，默认值为false。</para>
           </listitem>
         </varlistentry>
 
@@ -392,16 +311,14 @@ run_mojo Echo
           <term>@deprecated "&lt;true|false&gt;"</term>
 
           <listitem>
-            <para>Marks the parameter as deprecated. The default value is
-            false.</para>
+            <para>标记该参数是废弃的。默认为false。</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
-      <para>Putting this altogether, a fully annotated message parameter from
-      <filename>echo.rb</filename> would look like the following code:</para>
+      <para>将所有这些内容放在一起，一个echo.rb中完全注解的message参数看起来就会成为这个样子：</para>
 
-      <programlisting ># @parameter type="java.lang.String" default-value="Hello Maven World" expression="${message}"
+      <programlisting># @parameter type="java.lang.String" default-value="Hello Maven World" expression="${message}"
 # @readonly true
 # @required false
 # @deprecated false
@@ -409,15 +326,14 @@ def message
 end
 </programlisting>
 
-      <para>Ruby Mojo classes are annotated with the following
-      attributes:</para>
+      <para>Ruby的Mojo类可以使用如下的注解：</para>
 
       <variablelist>
         <varlistentry>
           <term>@goal</term>
 
           <listitem>
-            <para>Specifies the name of the goal.</para>
+            <para>指定目标的名称。</para>
           </listitem>
         </varlistentry>
 
@@ -425,7 +341,7 @@ end
           <term>@phase</term>
 
           <listitem>
-            <para>The default phase to bind this goal to.</para>
+            <para>该目标绑定的默认的阶段。</para>
           </listitem>
         </varlistentry>
 
@@ -433,8 +349,7 @@ end
           <term>@requiresDependencyResolution</term>
 
           <listitem>
-            <para>True if the Mojo requires that dependencies be resolved
-            before execution.</para>
+            <para>如果Mojo需要依赖在运行之前被解析，则为true。</para>
           </listitem>
         </varlistentry>
 
@@ -442,7 +357,7 @@ end
           <term>@aggregator</term>
 
           <listitem>
-            <para>Marks this mojo as an aggregator.</para>
+            <para>标记该mojo为聚合。</para>
           </listitem>
         </varlistentry>
 
@@ -450,16 +365,14 @@ end
           <term>@execute</term>
 
           <listitem>
-            <para>Provides the opportunity to execute a goal or lifecycle
-            phase before executing this Mojo. The @execute annotation takes
-            the following attributes:</para>
+            <para>支持在运行Mojo之前执行一个目标或者生命周期阶段。@execute注解接受如下的属性；</para>
 
             <variablelist>
               <varlistentry>
                 <term>goal</term>
 
                 <listitem>
-                  <para>Name of the goal to execute</para>
+                  <para>要执行的目标的名称。</para>
                 </listitem>
               </varlistentry>
 
@@ -467,7 +380,7 @@ end
                 <term>phase</term>
 
                 <listitem>
-                  <para>Name of the lifecycle phase to execute</para>
+                  <para>要执行的生命周期阶段的名称。</para>
                 </listitem>
               </varlistentry>
 
@@ -475,7 +388,7 @@ end
                 <term>lifecycle</term>
 
                 <listitem>
-                  <para>Name of the lifecycle (if other than default)</para>
+                  <para>生命周期的名称（如果不是默认的话）。</para>
                 </listitem>
               </varlistentry>
             </variablelist>
@@ -483,10 +396,9 @@ end
         </varlistentry>
       </variablelist>
 
-      <para>For an example of an annotated Mojo class, consider the following
-      code example:</para>
+      <para>举一个注解Mojo类的例子，代码如下：</para>
 
-      <programlisting ># Completes some build task
+      <programlisting># Completes some build task
 # @goal custom-goal
 # @phase install
 # @requiresDependencyResolution false
@@ -495,14 +407,13 @@ class CustomMojo &lt; Mojo
    ...
 end</programlisting>
 
-      <para>Mojo parameters can reference Java classes and Maven properties.
-      The following example shows you how to get access to the Maven Project
-      object from a Ruby Mojo.</para>
+      <para>Mojo参数可以引用Java类和Maven属性。下面的例子展示了如果从Ruby
+      Mojo访问MavenProject对象。</para>
 
       <example>
-        <title>Referencing a Maven Project from a Ruby Mojo</title>
+        <title>从Ruby Mojo中引用MavenProject对象</title>
 
-        <programlisting ># This is a mojo description
+        <programlisting># This is a mojo description
 # @goal test
 # @phase validate
 class Test &lt; Mojo
@@ -524,12 +435,7 @@ end
 run_mojo Test
 </programlisting>
 
-        <para>In the previous example, we can access properties on the
-        <classname>Project</classname> class using standard Ruby syntax. If
-        you put <filename>test.rb</filename> in
-        <varname>firstruby-maven-plugin</varname>'s
-        <filename>src/main/scripts</filename> directory, install the plugin,
-        and then run it, you will see the following output:</para>
+        <para>在前面的例子中，我们可以使用标准的Ruby语法访问Project类的属性。如果你将test.rb放到firstruby-maven-plugin的<filename>src/main/scripts</filename>目录，然后install这个插件，接着运行它，你会看到如下的输出：</para>
 
         <screen>$ <command>mvn install</command>
 ...
@@ -552,13 +458,11 @@ $ <command>mvn firstruby:test</command>
     </section>
 
     <section>
-      <title>Logging from a Ruby Mojo</title>
+      <title>Ruby Mojo中使用日志</title>
 
-      <para>To log from a Ruby Mojo, call the <methodname>info()</methodname>,
-      <methodname>debug()</methodname>, and <methodname>error()</methodname>
-      methods with a message. </para>
+      <para>要在Ruby Mojo中使用日志，调用info(), debug(), 和error()方法，并传入日志信息参数。</para>
 
-      <programlisting ># Tests Logging
+      <programlisting># Tests Logging
 # @goal logtest
 # @phase validate
 class LogTest &lt; Mojo
@@ -576,18 +480,15 @@ run_mojo LogTest
     </section>
 
     <section>
-      <title>Raising a MojoError</title>
+      <title>Raise一个MojoError</title>
 
-      <para>If there is an unrecoverable error in a Ruby Mojo, you will need
-      to raise a <classname>MojoError</classname>. <xref
-      linkend="ex-raise-ruby-error" /> shows you how to raise a
-      <classname>MojoError</classname>. This example mojo prints out a message
-      and then raises a <classname>MojoError</classname>.</para>
+      <para>如果在一个Ruby Mojo中有一个未发现的错误，你就需要raise一个MojoError。<xref
+      linkend="ex-raise-ruby-error" />展示了如何raise一个MojoError。例子中的mojo首先打印了一条日志信息，然后raise一个MojoError。</para>
 
       <example id="ex-raise-ruby-error">
-        <title>Raising a MojoError from a Ruby Mojo</title>
+        <title>在Ruby Mojo中raise一个MojoError</title>
 
-        <programlisting ># Prints a Message
+        <programlisting># Prints a Message
 # @goal error
 # @phase validate
 class Error &lt; Mojo
@@ -610,7 +511,7 @@ run_mojo Error
 </programlisting>
       </example>
 
-      <para>Running this Mojo, produces the following output:</para>
+      <para>运行该Mojo，会产生如下的输出：</para>
 
       <screen>$ mvn firstruby:error
 ...
@@ -621,18 +522,16 @@ INFO] [firstruby:error]
     </section>
 
     <section>
-      <title>Referencing Plexus Components from JRuby</title>
+      <title>在JRuby中引用Plexus组件</title>
 
-      <para>A Ruby Mojo can depend on a Plexus component. To do this, you
-      would use the <varname>expression</varname> attribute of the
-      <classname>@parameter</classname> annotation to specify a role and a
-      hint for Plexus. The following example Ruby Mojo, depends upon an
-      Archiver component which Maven will retrieve from Plexus.</para>
+      <para>Ruby
+      Mojo可以依赖于一个Plexus组件。为此，你需要使用@parameter注解的expression参数，在这里为Plexus指定role和hint。下面的例子中，Ruby
+      Mojo依赖于Archiver组件，Maven会据此从Plexus获取该组件。</para>
 
       <example>
-        <title>Depending on a Plexus Component from a Ruby Mojo</title>
+        <title>在Ruby Mojo中依赖于一个Plexus组件</title>
 
-        <programlisting ># This mojo tests plexus integration
+        <programlisting># This mojo tests plexus integration
 # @goal testplexus
 # @phase validate
 class TestPlexus &lt; Mojo
@@ -651,37 +550,24 @@ run_mojo TestPlexus
 </programlisting>
       </example>
 
-      <para>Please note that the attributes for an annotation in a Ruby Mojo
-      cannot span multiple lines. If you were to run this goal, you would see
-      Maven attempt to retrieve a component from Plexus with a role of
-      <varname>org.codehaus.plexus.arhiver.Archiver</varname> and a hint of
-      <varname>zip</varname>.</para>
+      <para>请注意Ruby
+      Mojo注解的属性不能跨越多行。如果你要运行该目标，你会看到Maven将根据role：org.codehaus.plexus.archiver.Archiver和hit：zip尝试从Plexus获取一个组件。</para>
     </section>
   </section>
 
   <section>
-    <title>Writing Plugins in Groovy</title>
+    <title>使用Groovy编写插件</title>
 
-    <para>Groovy is a dynamic language based on the Java Virtual Machine which
-    compiles to Java bytecode. Groovy is a project in the Codehaus community.
-    If you are fluent in Java, Groovy will seem like a natural choice for a
-    scripting language. Groovy takes the features of Java, pares down the
-    syntax a bit, and adds features like closures, duck-typing, and regular
-    expressions. For more information about Groovy, please see the Groovy web
-    site at <ulink
-    url="http://groovy.codehaus.org">http://groovy.codehaus.org</ulink>.</para>
+    <para>Groovy是一个基于Java虚拟机的动态语言，它最终也被编译成Java字节码。Groovy是Codehaus社区的项目。如果你十分熟悉Java，Groovy就会是一种很自然的脚本语言。Groovy使用了Java的很多特性，同时进行了略微的裁剪，并加入了一些新特性，如闭包(closure)，鸭子类型判断(duck-typing)，和正则表达式。要了解更多的关于Groovy的信息，可以访问Groovy的站点：<ulink
+    url="http://groovy.codehaus.org">http://groovy.codehaus.org</ulink>。</para>
 
     <section>
-      <title>Creating a Groovy Plugin</title>
+      <title>创建一个Groovy插件</title>
 
-      <para>To create a Maven Plugin using Groovy, you only need two files: a
-      <filename>pom.xml</filename> and a single Mojo implemented in Groovy. To
-      get started, create a project directory named
-      <varname>firstgroovy-maven-plugin</varname>. Place the following
-      <filename>pom.xml</filename> in this directory.</para>
+      <para>要使用Groovy创建一个Maven插件，你只需要两个文件：一个pom.xml和一个用Groovy实现的Mojo。首先，创建一个名为firstgroovy-maven-plugin的项目目录，然后在该目录下创建如下的pom.xml文件：</para>
 
       <example>
-        <title>POM for a Groovy Maven Plugin</title>
+        <title>Groovy Maven插件的POM</title>
 
         <programlisting language="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;project&gt;
@@ -726,20 +612,12 @@ run_mojo TestPlexus
 </programlisting>
       </example>
 
-      <para>What's going on in this <acronym>POM</acronym>? First, notice that
-      the packaging of the <acronym>POM</acronym> is
-      <varname>maven-plugin</varname> because we are creating a project that
-      will package a Maven plugin. Next, note that the project depends on the
-      <varname>groovy-mojo-support</varname> artifact in the
-      <varname>org.codehaus.mojo.groovy</varname> group.</para>
+      <para>这个POM到底是怎么回事呢？首先，注意这个POM的打包类型是maven-plugin，这是因为我们要创建一个打包为Maven插件的项目。接着，注意该项目依赖于groupId为org.codehaus.mojo.groovy，artifactId为groovy-maven-plugin的构件。</para>
 
-      <para>Then under <filename>src/main/groovy</filename> in a directory
-      <filename>org/sonatype/mavenbook/plugins</filename>, create a file named
-      <filename>EchoMojo.groovy</filename> which contains the EchoMojo
-      class.</para>
+      <para>接着在项目的<filename>src/main/groovy</filename>目录，创建一个名为EchoMojo.groovy的文件，其包含如下的EchoMojo类：</para>
 
       <example>
-        <title></title>
+        <title>Echo Groovy Mojo</title>
 
         <programlisting language="java">package org.sonatype.mavenbook.plugins
 
