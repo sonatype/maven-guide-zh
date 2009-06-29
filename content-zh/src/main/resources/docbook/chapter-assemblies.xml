@@ -423,7 +423,7 @@ second-project-1.0-SNAPSHOT/src/test/java/org/sonatype/mavenbook/AppTest.java</s
         <term>模块信息</term>
 
         <listitem>
-          <para>套件描述符的这一小节允许你在装备自定义归档的时候利用父子关系，以包含你项目模块的源文件，构件，和依赖。这是套件描述符中最复杂的小节，因为它允许你以两种方式操作模块和子模块：以一系列<sgmltag>fileSets</sgmltag>（通过<sgmltag>sources</sgmltag>小节）或者以一系列<sgmltag>dependencySets</sgmltag>（通过<sgmltag>binaries</sgmltag>小节）。</para>
+          <para>套件描述符的这一小节允许你在装配自定义归档的时候利用父子关系，以包含你项目模块的源文件，构件，和依赖。这是套件描述符中最复杂的小节，因为它允许你以两种方式操作模块和子模块：以一系列<sgmltag>fileSets</sgmltag>（通过<sgmltag>sources</sgmltag>小节）或者以一系列<sgmltag>dependencySets</sgmltag>（通过<sgmltag>binaries</sgmltag>小节）。</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -440,7 +440,7 @@ second-project-1.0-SNAPSHOT/src/test/java/org/sonatype/mavenbook/AppTest.java</s
       <para>任何在<xref
       linkend="sect-properties" />中讨论的属性都可以在一个套件描述符中引用。在套件描述符被Maven使用之前，它首先会根据<acronym>POM</acronym>及构建环境的信息修改一些对应的值。所有运行时<acronym>POM</acronym>中可修改的值，同样适用于套件描述符，包括<acronym>POM</acronym>属性，<acronym>POM</acronym>元素的值，系统属性，用户定义的属性，以及操作系统环境变量。</para>
 
-      <para>这一插值阶段的例外是<sgmltag>outputDirectory</sgmltag>，<sgmltag>outputDirectoryMapping</sgmltag>，和<sgmltag>outputFileNameMapping</sgmltag>元素。保持它们原始的值是为了能在解析构件特定的——或者组件特定的信息的时候，得到正确的值。</para>
+      <para>这一插值阶段的例外是<sgmltag>outputDirectory</sgmltag>，<sgmltag>outputDirectoryMapping</sgmltag>，和<sgmltag>outputFileNameMapping</sgmltag>元素。保持它们原始的值是为了能在解析构件特定的——或者组件特定的信息的时候，能得到正确的值。</para>
 
       <!--This last paragraph is not clear.
 The reason these are held back in their raw form is to allow artifact- or module-specific information
@@ -520,7 +520,7 @@ The reason these are held back in their raw form is to allow artifact- or module
         </listitem>
       </itemizedlist>
 
-      <para>id和format至关重要，因为它们将成为套件归档的坐标的一部分。<xref
+      <para>id和format至关重要，因为它们将成为套件归档坐标的一部分。<xref
       linkend="ex-required-assembly" />中的例子会创建一个打包类型为zip，分类器为bundle的套件构件。</para>
     </section>
   </section>
@@ -559,7 +559,7 @@ The reason these are held back in their raw form is to allow artifact- or module
       url="http://en.wikipedia.org/wiki/File_system_permissions#Octal_notation_and_additional_permissions">four-digit
       Octal notation</ulink>。</para>
 
-      <para>如果你知道所有需包含的文件的完整列表，你就可以使用file条目构建了一个十分复杂的套件。即使在构建开始之前你不知道这个完整的列表，你也可以使用一个自定义的Maven插件来发现这个列表，然后生成如上例中的套件描述符。files元素能给你提供细粒度的文件控制，包括每个文件的权限，位置及名称，但是在一个大型的归档中，为所有文件罗列file元素就比较繁琐了。因此大部分情况下，你需要使用fileSets针对一组文件进行操作。余下的四个文件包含配置元素，被设计用来帮助你包含整个一组匹配某个特定标准的文件。</para>
+      <para>如果你知道所有需包含的文件的完整列表，你就可以使用file条目构建了一个十分复杂的套件。即使在构建开始之前你不知道这个完整的列表，你也可以使用一个自定义的Maven插件来发现这个列表，然后生成如上例中的套件描述符。files元素能给你提供细粒度的文件控制，包括每个文件的权限，位置及名称，但是在一个大型的归档中，为所有文件罗列file元素就比较繁琐了。因此大部分情况下，你需要使用fileSets针对一组文件进行操作。余下的四个文件包含配置元素，用来帮助你包含整个一组匹配某个特定标准的文件。</para>
     </section>
 
     <section>
@@ -586,7 +586,7 @@ The reason these are held back in their raw form is to allow artifact- or module
       linkend="ex-explicit-fileSet" />展示了一个指定所有默认值的fileSet元素。</para>
 
       <example id="ex-explicit-fileSet">
-        <title>Including Files with <sgmltag>fileSet</sgmltag></title>
+        <title>使用fileSet包含文件</title>
 
         <programlisting language="xml">&lt;assembly&gt;
   ...
@@ -653,7 +653,7 @@ The reason these are held back in their raw form is to allow artifact- or module
         </varlistentry>
       </variablelist>
 
-      <para>最后，如果你想要确保所有文件匹配模式都被使用到，你可以使用userStrictFiltering元素，并将其值指定为true（默认值为false）。有些时候未使用的模式可能预示着某个中间输出目录缺失文件。使用值为true的useStrictFiltering后，当某个包含模式未满足，Assembly插件就会失败。换句话说，如果你使用一个包含模式来包含构建中的某个文件，但是这个文件不存在，将userStrictFiltering设置成true会使得Maven构建失败。</para>
+      <para>最后，如果你想要确保所有文件匹配模式都被使用到，你可以使用userStrictFiltering元素，并将其值指定为true（默认值为false）。有些时候未使用的模式可能预示着某个中间输出目录缺失文件。使用值为true的useStrictFiltering后，当某个包含模式未被使用，Assembly插件就会失败。换句话说，如果你使用一个包含模式来包含构建中的某个文件，但是这个文件不存在，将userStrictFiltering设置成true会使得Maven构建失败。</para>
 
       <!--TODO: JCasey, I had to take the statement about Ant Expressions out because I couldn't verify it.
 I can add this back in later.  I didn't want to talk about it without an example.  - TIM-->
@@ -715,7 +715,7 @@ I can add this back in later.  I didn't want to talk about it without an example
       <para>这个默认的模式数组会排除来自于如<ulink
       url="http://www.gnu.org/software/emacs/">GNU
       Emacs</ulink>的编辑器的临时文件，Mac中常见的临时文件，以及一些常见源码控制系统的元数据文件（虽然Visual
-      SourceSafe得到的更多的是恶名而非源码控制系统）。如果你需要覆盖这个默认的排除模式，你可以将setDefaultExcludes设置成false，然后在你自己的套件描述符中定义一组排除模式。</para>
+      SourceSafe得到的更多的是恶名而非好的源码控制系统）。如果你需要覆盖这个默认的排除模式，你可以将setDefaultExcludes设置成false，然后在你自己的套件描述符中定义一组排除模式。</para>
     </section>
 
     <section id="sect-output-algorithm">
@@ -758,7 +758,7 @@ I can add this back in later.  I didn't want to talk about it without an example
   ...
 &lt;/assembly&gt;</programlisting>
 
-        <para>这会使得所有单独的依赖被放到与其groupId对应的子目录中。</para>
+        <para>这会使得所有依赖被放到与其groupId对应的子目录中。</para>
 
         <para>如果你想要更进一步的自定义，并移除所有依赖的版本号。你可以使用outputFileNameMapping来自定义每个输出文件的文件名，如：</para>
 
@@ -851,48 +851,19 @@ I can add this back in later.  I didn't want to talk about it without an example
       </section>
 
       <section>
-        <title>Including and Excluding Dependencies by Scope</title>
+        <title>通过范围包含或排除依赖</title>
 
-        <para>In <xref linkend="pom-relationships" />, it was noted that all
-        project dependencies have one scope or another. Scope determines when
-        in the build process that dependency normally would be used. For
-        instance, test-scoped dependencies are not included in the classpath
-        during compilation of the main project sources; but they are included
-        in the classpath when compiling unit test sources. This is because
-        your project’s main source code should not contain any code specific
-        to testing, since testing is not a function of the project (it’s a
-        function of the project’s build process). Similarly, provided-scoped
-        dependencies are assumed to be present in the environment of any
-        eventual deployment. However, if a project depends on a particular
-        provided dependency, it is likely to require that dependency in order
-        to compile. Therefore, provided-scoped dependencies are present in the
-        compilation classpath, but not in the dependency set that should be
-        bundled with the project’s artifact or assembly.</para>
+        <para>在<xref
+        linkend="pom-relationships" />中，我们看到所有项目的依赖都有范围。依赖范围决定了依赖在构建过程的哪些阶段被使用。例如，test范围的依赖不会在编译项目主资源的时候被引入到classpath中；但当编译单元测试资源的时候，这些依赖就会被加入到classpath中。这是因为项目主资源的代码不该包含任何测试特有的代码，测试并不是一个项目的功能（它是项目构建过程的一个功能）。类似的，provided范围的依赖会被认为是已经在最终的部署环境中存在。但是，如果一个项目依赖于某个特定的provided依赖，那么它还是需要这个依赖以进行编译。因此，provided范围的依赖存在于编译classpath中，但是不会和项目构件或套件一起被打包发布。</para>
 
-        <para>Also from <xref linkend="pom-relationships" />, recall that some
-        dependency scopes imply others. For instance, the
-        <varname>runtime</varname> dependency scope implies the
-        <varname>compile</varname> scope, since all compile-time dependencies
-        (except for those in the <varname>provided</varname> scope) will be
-        required for the code to execute. There are a number of complex
-        relationships between the various dependency scopes which control how
-        the scope of a direct dependency affects the scope of a transitive
-        dependency. In a Maven Assembly descriptor, we can use scopes to apply
-        different settings to different sets of dependencies
-        accordingly.</para>
+        <para>同样在<xref
+        linkend="pom-relationships" />中，可以回忆到，一些依赖范围暗指了其它依赖范围。例如，runtime依赖范围暗指了compile范围，代码运行的时候需要所有编译时的依赖（除去那些provided范围的依赖）。各种各样的依赖范围之前有很多复杂的关系，这些关系控制一个直接依赖的范围如何影响间接依赖的范围。在Maven套件描述符中，我们可以使用依赖范围将不同的设置应用到不同的依赖组中。</para>
 
-        <para>For instance, if we plan to bundle a web application with <ulink
-        url="http://www.mortbay.org/jetty-6/">Jetty</ulink> to create a
-        completely self-contained application, we’ll need to include all
-        provided-scope dependencies somewhere in the jetty directory structure
-        we’re including. This ensures those provided dependencies actually are
-        present in the runtime environment. Non-provided, runtime dependencies
-        will still land in the WEB-INF/lib directory, so these two dependency
-        sets must be processed separately. These dependency sets might look
-        similar to the following XML.</para>
+        <para>例如，如果我们打算在web应用中包裹<ulink
+        url="http://www.mortbay.org/jetty-6/">Jetty</ulink>以创建一个完全自包含的应用，我们会需要包含所有jetty目录结构中的所有provided范围依赖。这才能确保那些provided范围的依赖存在于实际的运行环境着哦国内。非provided的，运行时的依赖仍然位于WEB-INF/lib目录中，因此这两组依赖需要分别处理。这些依赖组可能看起来很类似，如下列XML：</para>
 
         <example>
-          <title>Defining Dependency Sets Using Scope</title>
+          <title>使用范围来定义依赖组</title>
 
           <programlisting language="xml">&lt;assembly&gt;
   ...
@@ -912,137 +883,61 @@ I can add this back in later.  I didn't want to talk about it without an example
 &lt;/assembly&gt;</programlisting>
         </example>
 
-        <para>Provided-scoped dependencies are added to the
-        <filename>lib/</filename> directory in the assembly root, which is
-        assumed to be a libraries directory that will be included in the Jetty
-        global runtime classpath. We’re using a subdirectory named for the
-        project’s <varname>artifactId</varname> in order to make it easier to
-        track the origin of a particular library. Runtime dependencies are
-        included in the <filename>WEB-INF/lib</filename> path of the web
-        application, which is located within a subdirectory of the standard
-        Jetty <filename>webapps/</filename> directory that is named using a
-        custom <acronym>POM</acronym> property called
-        <varname>webContextName</varname>. What we've done in the previous
-        example is separate application-specific dependencies from
-        dependencies which will be present in a Servlet contains global
-        classpath.</para>
+        <para>provided范围的依赖会添加到套件根目录下的lib/目录中，该目录是一个会被包含到Jetty全局运行classpath中的类库目录。我们使用根据项目artifactId命名的子目录以方便跟踪某个类库的出处。运行时依赖被添加到web应用的WEB-INF/lib路径下，这位于标准jetty的webapps/下的一个子目录中，该子目录使用自定义的POM属性webContextName进行设置。在这个例子中我们完成的事情是，将应用程序特定的依赖与那些位于Server容器全局classpath中的依赖隔离。</para>
 
-        <para>However, simply separating according to scope may not be enough,
-        particularly in the case of a web application. It’s conceivable that
-        one or more runtime dependencies will actually be bundles of
-        standardized, non-compiled resources for use in the web application.
-        For example, consider a set of web application which reuse a common
-        set of Javascript, CSS, SWF, and image resources. To make these
-        resources easy to standardize, it’s a common practice to bundle them
-        up in an archive and deploy them to the Maven repository. At that
-        point, they can be referenced as standard Maven dependencies -
-        possibly with a dependency type of <varname>zip</varname> - that are
-        normally specified with a runtime scope. Remember, these are
-        resources, not binary dependencies of the application code itself;
-        therefore, it’s not appropriate to blindly include them in the
-        <filename>WEB-INF/lib</filename> directory. Instead, these resource
-        archives should be separated from binary runtime dependencies, and
-        unpacked into the web application document root somewhere. In order to
-        achieve this kind of separation, we’ll need to use inclusion and
-        exclusion patterns that apply to the coordinates of a specific
-        dependency.</para>
+        <para>然而，简单的根据范围来分隔依赖可能还不够，尤其是在web应用中。我们可以想象到某个或者多个运行时依赖可能实际上是供web应用使用的标准化的，非二进制的资源包裹。例如，考虑有一组web应用程序重用了一组Javascript,
+        CSS, SWF,
+        和图片资源。为了是这些资源更容易标准化，通常的做法是将它们包裹成一个归档文件并部署到Maven仓库中。这样，它们就可以通过标准的Maven依赖被引用——可能依赖的类型是zip——而这样的依赖通常是runtime范围的。但是，别忘了，它们是资源文件，不是应用程序代码本身的二进制依赖；因此，盲目的将这些文件放到WEB-INF/lib目录中是错误的。我们应该把这些资源归档和其它runtime依赖区别对待，将它们放到拆解后放到web应用的文档根目录中。为了实现这种分离，我们需要使用可以应用到特定依赖坐标上的包含和排除模式。</para>
 
-        <para>In other words, say you have three or four web application which
-        reuse the same resources and you want to create an assembly that puts
-        provided dependencies into <filename>lib/</filename>, runtime
-        dependencies into
-        <filename>webapps/&lt;contextName&gt;/WEB-INF/lib</filename>, and then
-        unpacks a specific runtime dependency into your web application's
-        document root. You can do this because the Assembly allows you to
-        define multiple include and exclude patterns for a given
-        <sgmltag>dependencySet</sgmltag> element. Read the next section for
-        more development of this idea.</para>
+        <para>换句话说，假如你有三个或者四个web应用，它们重用了同样的资源。你想要创建一个套件，将provided依赖放到lib/，将runtime依赖放到webapps/&lt;contextName&gt;/WEB-INF/lib，将某个特定的runtime依赖拆解并放到web应用的文档根目录中。你能完成这个任务，因为Assembly允许你为某个dependencySet元素定义多个包含和排除模式。阅读下一节将帮助你了解更多相关内容。</para>
       </section>
 
       <section>
-        <title>Fine Tuning: Dependency Includes and Excludes</title>
+        <title>微调：依赖包含和排除</title>
 
-        <para>A resource dependency might be as simple as a set of resources
-        (CSS, Javascript, and Images) in a project that has an assembly which
-        creates a <acronym>ZIP</acronym> archive. Depending on the particulars
-        of our web application, we might be able to distinguish resource
-        dependencies from binary dependencies solely according to type. Most
-        web applications are going to depend on other dependencies of type
-        <varname>jar</varname>, and it is possible that we can state with
-        certainty that all dependencies of type <varname>zip</varname> are
-        resource dependencies. Or, we might have a situation where resources
-        are stored in <varname>jar</varname> format, but have a classifier of
-        something like <varname>resources</varname>. In either case, we can
-        specify an inclusion pattern to target these resource dependencies and
-        apply different logic than that used for binary dependencies. We’ll
-        specify these tuning patterns using the <sgmltag>includes</sgmltag>
-        and <sgmltag>excludes</sgmltag> sections of the
-        <sgmltag>dependencySet</sgmltag>.</para>
+        <para>一个资源依赖可能只是简单的某个项目的一组资源（CSS, Javascript,
+        和图片），该项目为此创建了一个ZIP归档格式的套件。基于我们web应用的特性，我们也许可以简单的通过依赖的打包格式来区分资源依赖和其它字节码依赖。大部分web应用以jar的形式依赖其它项目，因此我们可以简单的决定说有zip依赖为资源依赖。又或者，可能某些时候资源以jar的格式存储，但我们可以使用一个分类器，如resources。不管哪种情形，我们都可以为这些资源依赖使用包含模式，同时为其它字节码依赖使用不同的逻辑。我们会使用dependencySet的includes和excludes子元素来指定这些微调模式。</para>
 
-        <para>Both includes and excludes are list sections, meaning they
-        accept the sub-elements <sgmltag>include</sgmltag> and
-        <sgmltag>exclude</sgmltag> respectively. Each
-        <sgmltag>include</sgmltag> or <sgmltag>exclude</sgmltag> element
-        contains a string value, which can contain wildcards. Each string
-        value can match dependencies in a few different ways. Generally
-        speaking, three identity pattern formats are supported:</para>
+        <para>includes和excludes都包含一子元素，相应的为include和exclude子元素。每个include或者exclude元素包含一个字符串值，该值可以包含通配符。每个字符串值都可以通过很多不同方式匹配依赖。总的来说，这里支持三种定义符匹配格式：</para>
 
         <variablelist>
           <varlistentry>
-            <term><varname>groupId:artifactId</varname> - version-less
-            key</term>
+            <term><varname>groupId:artifactId</varname> - 无版本id</term>
 
             <listitem>
-              <para>You would use this pattern to match a dependency by only
-              the groupId and the artifactId</para>
+              <para>仅仅使用groupId和artifactId来匹配依赖。</para>
             </listitem>
           </varlistentry>
 
           <varlistentry>
             <term><varname>groupId:artifactId:type[:classifier]</varname> -
-            conflict id</term>
+            冲突id</term>
 
             <listitem>
-              <para>The pattern allows you to specify a wider set of
-              coordinates to create a more specific include/exclude
-              pattern.</para>
+              <para>该模式能让你指定一个更广的坐标范围，以创建更具体的包含/排除模式。</para>
             </listitem>
           </varlistentry>
 
           <varlistentry>
             <term><varname>groupId:artifactId:type[:classifier]:version</varname>
-            - full artifact identity</term>
+            - 完整构件定义符</term>
 
             <listitem>
-              <para>If you need to get really specific, you can specify all
-              the coordinates.</para>
+              <para>如果你需要十分十分的具体，你可以指定所有坐标。</para>
             </listitem>
           </varlistentry>
         </variablelist>
 
-        <para>All of these pattern formats support the wildcard character ‘*’,
-        which can match any subsection of the identity and is not limited to
-        matching single identity parts (sections between ‘:’ characters).
-        Also, note that the classifier section above is optional, in that
-        patterns matching dependencies that don’t have classifiers do not need
-        to account for the classifier section in the pattern.</para>
+        <para>所有这三种模式都支持通配符‘*’，它可以匹配定义符的任何一个子段，但不局限于一个单独的子段（位于‘:’中间的部分）。同时，注意上述的分类器部分是可选的，如果需要匹配的依赖没有分类器，就不需要在模式中指定分类器子段。</para>
 
-        <para>In the example given above, where the key distinction is the
-        artifact type zip, and none of the dependencies have classifiers, the
-        following pattern would match resource dependencies assuming that they
-        were of type <varname>zip</varname>:</para>
+        <para>在前面讲述的例子中，关键的区别在于构件类型zip，并且没有任何依赖拥有分类器，下列的模式会匹配所有类型为zip的资源依赖：</para>
 
         <programlisting>*:zip</programlisting>
 
-        <para>The pattern above makes use of the second dependency identity:
-        the dependency’s conflict id. Now that we have a pattern that
-        distinguishes resource dependencies from binary dependencies, we can
-        modify our dependency sets to handle resource archives
-        differently:</para>
+        <para>上述的模式使用了第二种依赖定义符：依赖的冲突id。既然我们拥有了区分资源依赖和其它字节码依赖的模式，我们可以修改依赖集合来区分处理资源归档：</para>
 
         <example id="ex-complex-dependencySet">
-          <title>Using Dependency Excludes and Includes in
-          <sgmltag>dependencySets</sgmltag></title>
+          <title>在dependencySets中使用依赖排除和包含</title>
 
           <programlisting language="xml">&lt;assembly&gt;
   ...
@@ -1075,175 +970,52 @@ I can add this back in later.  I didn't want to talk about it without an example
 &lt;/assembly&gt;</programlisting>
         </example>
 
-        <para>In <xref linkend="ex-complex-dependencySet" />, the
-        runtime-scoped dependency set from our last example has been updated
-        to exclude resource dependencies. Only binary dependencies (non-zip
-        dependencies) should be added to the <filename>WEB-INF/lib</filename>
-        directory of the web application. Resource dependencies now have their
-        own dependency set, which is configured to include these dependencies
-        in the resources directory of the web application. The
-        <sgmltag>includes</sgmltag> section in the last
-        <sgmltag>dependencySet</sgmltag> reverses the exclusion from the
-        previous <sgmltag>dependencySet</sgmltag>, so that resource
-        dependencies are included using the same identity pattern (i.e.
-        <varname>*:zip</varname>). The last <sgmltag>dependencySet</sgmltag>
-        refers to the shared resource dependency and it is configured to
-        unpack the shared resource dependency in the document root of the web
-        application.</para>
+        <para>在<xref
+        linkend="ex-complex-dependencySet" />中，前一个例子中的运行时依赖集合已经更新，现在它排除了资源依赖。我们的字节码依赖（非zip依赖）需要被添加到web应用的WEB-INF/lib目录中。而资源依赖现在有其自身的依赖集合，它被配置成包含那些zip依赖，并输出至web应用的资源目录。例子中最后一个dependencySet中的includes元素和前一个dependencySet中的excludes元素起到的效果完全相反，因此使用同样的定义符模式，资源依赖就被准确包含了。最后一个dependencySet元素指向了共享资源依赖，并会拆解资源依赖至web应用的文档根目录中。</para>
 
-        <para><xref linkend="ex-complex-dependencySet" /> was based upon the
-        assumption that our shared resources project dependency had a type
-        which differed from all of the other dependencies. What if the share
-        resource dependency had the same type as all of the other
-        dependencies? How could you differentiate the dependency? In this case
-        if the shared resource dependency had been bundled as a JAR with the
-        classifier <varname>resources</varname>, you can change to the
-        identity pattern and match those dependencies instead:</para>
+        <para><xref
+        linkend="ex-complex-dependencySet" />的前提是所有共享资源依赖的类型和其它依赖类型不一样。那么如果共享资源依赖和其它依赖的类型一致呢？你如何区分这些依赖？在这种情况下，假如所有的共享资源依赖都被打包成JAR，并且其分类器是resources，你就可以更改定义符模式来匹配这些依赖：</para>
 
         <programlisting>*:jar:resources</programlisting>
 
-        <para>Instead of matching on artifacts with a type of
-        <varname>zip</varname> and no classifier, we’re matching on artifacts
-        with a classifier of resources and a type of
-        <varname>jar</varname>.</para>
+        <para>这里不再匹配那些类型为zip且没有分类器的构件，我们匹配所有类型为jar且分类器为resources的构件。</para>
 
-        <para>Just like the <sgmltag>fileSets</sgmltag> section,
-        <sgmltag>dependencySets</sgmltag> support the
-        <sgmltag>useStrictFiltering</sgmltag> flag. When enabled, any
-        specified patterns that don’t match one or more dependencies will
-        cause the assembly - and consequently, the build - to fail. This can
-        be particularly useful as a safety valve, to make sure your project
-        dependencies and assembly descriptors are synchronized and interacting
-        as you expect them to. By default, this flag is set to
-        <varname>false</varname> for the purposes of backward
-        compatibility.</para>
+        <para>和fileSets元素一样，dependencySets元素也支持useStrictFiltering标记。开启这个标记的时候，当任何一个指定的模式没有匹配任何依赖的时候，assembly插件运行就会失败，因此构建也会失败。有时候这是个很有用的保障，可以用来保证你项目的依赖和套件描述符是同步的，且按照你的意愿相互作用。默认情况下，为了向前兼容，该标记是关闭的。</para>
       </section>
 
       <section>
-        <title>Transitive Dependencies, Project Attachments, and Project
-        Artifacts</title>
+        <title>传递性依赖，项目构件，项目附属构件</title>
 
-        <para>The <sgmltag>dependencySet</sgmltag> section supports two more
-        general mechanisms for tuning the subset of matching artifacts:
-        transitive selection options, and options for working with project
-        artifacts. Both of these features are a product of the need to support
-        legacy configurations that applied a somewhat more liberal definition
-        of the word “dependency”. As a prime example, consider the project’s
-        own main artifact. Typically, this would not be considered a
-        dependency; yet older versions of the Assembly plugin included the
-        project artifact in calculations of dependency sets. To provide
-        backward compatibility with this “feature”, the 2.2 releases
-        (currently at 2.2-beta-2) of the Assembly plugin support a flag in the
-        <sgmltag>dependencySet</sgmltag> called
-        <sgmltag>useProjectArtifact</sgmltag>, whose default value is
-        <varname>true</varname>. By default, dependency sets will attempt to
-        include the project artifact itself in calculations about which
-        dependency artifacts match and which don’t. If you’d rather deal with
-        the project artifact separately, set this flag to
-        <varname>false</varname>.</para>
+        <para>dependencySet元素支持两种更通用的机制来微调一小组匹配构件：传递性依赖选项，以及操作项目构件的选项。这两种特性都是为了支持遗留配置，这些配置所理解的“依赖”条件更为宽松。举个典型的例子，让我们考虑项目本身的构件。一般来说，这不会被算作是一个依赖；然而老版本的Assembly插件把项目本身的构件也算作依赖集。为了给这种“特性”提供向前兼容性，Assembly插件的2.2版本（目前是2.2-beta-2）支持一个名为useProjectArtifact的标记，其默认值为true。因此默认情况依赖集合在计算包含和排除的时候会考虑项目本身构件。如果你要单独处理项目构件，就需要将该标记置为false。</para>
 
         <tip>
-          <para>The authors of this book recommend that you always set
-          <sgmltag>useProjectArtifact</sgmltag> to
-          <varname>false</varname>.</para>
+          <para>本书的作者推荐你一直将useProjectArtifact置为false。</para>
         </tip>
 
-        <para>As a natural extension to the inclusion of the project artifact,
-        the project’s attached artifacts can also be managed within a
-        <sgmltag>dependencySet</sgmltag> using the
-        <sgmltag>useProjectAttachments</sgmltag> flag (whose default value is
-        <varname>false</varname>). Enabling this flag allows patterns that
-        specify classifiers and types to match on artifacts that are
-        “attached” to the main project artifact; that is, they share the same
-        basic
-        <varname>groupId</varname>/<varname>artifactId</varname>/<varname>version</varname>
-        identity, but differ in <varname>type</varname> and
-        <varname>classifier</varname> from the main artifact. This could be
-        useful for including JavaDoc or source jars in an assembly.</para>
+        <para>自然的，作为项目构件的扩展，项目的附属构件也可以通过使用useProjectAttachments标记（默认值为false）在dependencySet中进行管理。开启这个标记后，指定分类器和类型的模式就会匹配那些“附属到”项目主构件的构件；就是说，它们共享基本的groupId/artifactId/version定义符，但是他们的type和classifier和主构件不同。当我们需要在套件中包含JavaDoc或者源码文件的时候，就可以使用这一特性。</para>
 
-        <para>Aside from dealing with the project’s own artifacts, it’s also
-        possible to fine-tune the dependency set using two
-        transitive-resolution flags. The first, called
-        <sgmltag>useTransitiveDependencies</sgmltag> (and set to
-        <varname>true</varname> by default) simply specifies whether the
-        dependency set should consider transitive dependencies at all when
-        determining the matching artifact set to be included. As an example of
-        how this could be used, consider what happens when your
-        <acronym>POM</acronym> has a dependency on another assembly. That
-        assembly (most likely) will have a classifier that separates it from
-        the main project artifact, making it an attachment. However, one quirk
-        of the Maven dependency-resolution process is that the
-        transitive-dependency information for the main artifact is still used
-        when resolving the assembly artifact. If the assembly bundles its
-        project dependencies inside itself, using transitive dependency
-        resolution here would effectively duplicate those dependencies. To
-        avoid this, we simply set <sgmltag>useTransitiveDependencies</sgmltag>
-        to <varname>false</varname> for the dependency set that handles that
-        assembly dependency.</para>
+        <para>除了处理项目自身的构件，我们还能够微调使用两个传递性依赖解析标记来微调依赖集合。首先，名为useTransitiveDependencies（默认为true）指定依赖集合是否计算传递性依赖。举个实际的例子，如果你的POM依赖于另外一个套件，这个套件（很可能）会有一个分类器以区分其主构件并将自身作为一个附属构件。然而，Maven在解析依赖的时候，就算是解析套件构件，其主构件的传递性依赖信息还是会被解析。如果套件已经将项目依赖包裹，使用传递性依赖解析就会造成这些依赖的重复。为了避免这一情况，我们重要简单的将useTransitiveDependencies置为false。</para>
 
-        <para>The other transitive-resolution flag is far more subtle. It’s
-        called <sgmltag>useTransitiveFiltering</sgmltag>, and has a default
-        value of <varname>false</varname>. To understand what this flag does,
-        we first need to understand what information is available for any
-        given artifact during the resolution process. When an artifact is a
-        dependency of a dependency (that is, removed at least one level from
-        your own <acronym>POM</acronym>), it has what Maven calls a
-        "dependency trail", which is maintained as a list of strings that
-        correspond to the full artifact identities
-        (<varname>groupId:artifactId:type:[classifier:]version</varname>) of
-        all dependencies between your <acronym>POM</acronym> and the artifact
-        that owns that dependency trail. If you remember the three types of
-        artifact identities available for pattern matching in a dependency
-        set, you’ll notice that the entries in the dependency trail - the full
-        artifact identity - correspond to the third type. When
-        <sgmltag>useTransitiveFiltering</sgmltag> is set to
-        <varname>true</varname>, the entries in an artifact’s dependency trail
-        can cause the artifact to be included or excluded in the same way its
-        own identity can.</para>
+        <para>另外一个传递性依赖解析标记就更微妙了。它叫做useTransitiveFiltering，其默认值为false。要了解这个标记是做什么的，我们首先需要理解在解析过程中哪些信息是对所有任何构件可用的。当一个构件是依赖的依赖的时候（就是说，需要在你项目本身的POM再往下至少一层），它有一个被Maven称作“依赖踪迹“的东西，依赖踪迹维护一个字符串序列，该序列包含一列完整的构件定义符（groupId:artifactId:type:[classifier:]version），所有你项目的POM和拥有该依赖踪迹的构件的定义符都在其中。如果你还记得依赖集合模式匹配中可用的三种构件定义符，你会注意到依赖踪迹的每一项——完整构件定义符——对应了第三种类型。在useTransitiveFiltering为true的时候，依赖踪迹中的条目就会像主构件一样被包含或排除。</para>
 
-        <para>If you’re considering using transitive filtering, be careful! A
-        given artifact can be included from multiple places in the
-        transitive-dependency graph, but as of Maven 2.0.9, only the first
-        inclusion’s trail will be tracked for this type of matching. This can
-        lead to subtle problems when collecting the dependencies for your
-        project.</para>
+        <para>如果你考虑使用传递性依赖过滤（transitive
+        filtering），要小心！某个构件可能会在传递依赖图中被包含多次，但是自Maven
+        2.0.9之后，只有第一个包含的踪迹会被认作该类型的匹配。当聚集你项目的依赖的时候，这可能会造成微妙的问题。</para>
 
         <warning>
-          <para>Most assemblies don’t really need this level of control over
-          dependency sets; consider carefully whether yours truly does. Hint:
-          It probably doesn't.</para>
+          <para>大部分套件实际上不需要对于依赖集合这么深层次的控制；当你真要这么做的时候，仔细考虑，很可能没有这个必要。</para>
         </warning>
       </section>
 
       <section>
-        <title>Advanced Unpacking Options</title>
+        <title>高级拆解选项</title>
 
-        <para>As we discussed previously, some project dependencies may need
-        to be unpacked in order to create a working assembly archive. In the
-        examples above, the decision to unpack or not was simple. It didn’t
-        take into account what needed to be unpacked, or more importantly,
-        what should not be unpacked. To gain more control over the dependency
-        unpacking process, we can configure the
-        <sgmltag>unpackOptions</sgmltag> element of the
-        <sgmltag>dependencySet</sgmltag>. Using this section, we have the
-        ability to choose which file patterns to include or exclude from the
-        assembly, and whether included files should be filtered to resolve
-        expressions using current <acronym>POM</acronym> information. In fact,
-        the options available for unpacking dependency sets are fairly similar
-        to those available for including files from the project directory
-        structure, using the file sets descriptor section.</para>
+        <para>正如我们之前讨论的，一些项目依赖需要先被拆解以帮助创建可用的套件归档。在前面的例子中，是否要拆解很明显。但是，没有考虑哪些部分需要拆解，或者，更重要的，哪些部分不要拆解。为了更好的控制拆解过程，我们可以配置dependencySet的unpackOptions元素。使用该元素，我们就可以选择拆解的时候包含或者排除那些文件模式，并且还可以配置那些被包含的文件是否需要被过滤以使用当前POM信息解析表达式。事实上，关于拆解依赖集合可用的选项，与包含项目目录结构使用的fileSets可用的选项十分类似。</para>
 
-        <para>To continue our web-application example, suppose some of the
-        resource dependencies have been bundled with a file that details their
-        distribution license. In the case of our web application, we’ll handle
-        third-party license notices by way of a <filename>NOTICES</filename>
-        file included in our own bundle, so we don’t want to include the
-        license file from the resource dependency. To exclude this file, we
-        simply add it to the unpack options inside the dependency set that
-        handles resource artifacts:</para>
+        <para>我们继续前面的web应用样例，假设一些资源依赖包裹了分发许可证文件。而在我们的web应用中，我们希望在自己套件的NOTICES文件中集中处理许可证信息，因此我们不希望引入该资源依赖的许可证文件。要排除这个文件，我们只需要在依赖集合配置中添加拆解选项如下：</para>
 
         <example>
-          <title>Excluding Files from a Dependency Unpack</title>
+          <title>在依赖拆解的时候排除文件</title>
 
           <programlisting language="xml">&lt;asembly&gt;
   ...
@@ -1268,158 +1040,50 @@ I can add this back in later.  I didn't want to talk about it without an example
 &lt;/assembly&gt;</programlisting>
         </example>
 
-        <para>Notice that the <sgmltag>exclude</sgmltag> we’re using looks
-        very similar to those used in <sgmltag>fileSet</sgmltag> declarations.
-        Here, we’re blocking any file starting with the word
-        <filename>LICENSE</filename> in any directory within our resource
-        artifacts. You can think of the unpack options section as a
-        lightweight <sgmltag>fileSet</sgmltag> applied to each dependency
-        matched within that dependency set. In other words, it is a
-        <sgmltag>fileSet</sgmltag> by way of an unpacked dependency. Just as
-        we specified an exclusion pattern for files within resource
-        dependencies in order to block certain files, you can also choose
-        which restricted set of files to include using the includes section.
-        The same code that processes inclusions and exclusions on
-        <sgmltag>fileSets</sgmltag> has been reused for processing
-        <sgmltag>unpackOptions</sgmltag>.</para>
+        <para>注意这里我们使用的exlude元素和前面fileSet中使用的exlude元素十分类似。这里，我们拦截资源依赖目录中所有以LICENSE名字开头的文件。你可以将拆解选项看成是一个应用到每个匹配依赖上的轻量级fileSet配置。换句话说，它是一个应用到拆解依赖上的fileSet配置。和为资源依赖指定文件排除模式一样，我们也可以使用includes元素严格指定一组被包含的文件。在fileSets中用来处理包含和排除的同样的代码在unpackOptions这里是被完全重用的。</para>
 
-        <para>In addition to file inclusion and exclusion, the unpack options
-        on a dependency set also provides a <sgmltag>filtering</sgmltag> flag,
-        whose default value is <varname>false</varname>. Again, this should be
-        familiar from our discussion of file sets above. In both cases,
-        expressions using either the Maven syntax of
-        <varname>${property}</varname> or the Ant syntax of
-        <varname>@property@</varname> are supported. Filtering is a
-        particularly nice feature to have for dependency sets, though, since
-        it effectively allows you to create standardized, versioned resource
-        templates that are then customized to each assembly as they are
-        included. Once you start mastering the use of filtered, unpacked
-        dependencies which store shared resources, you will be able to start
-        abstracting repeated resources into common resource projects.</para>
+        <para>除了包含和排除，拆解选项同样提供了filtering标记，其默认的值为false。同样，我们在fileSets中讨论该选项。对于两者来说，使用Maven语法的${property}和使用Ant语法的@property@都被支持。然而，对于依赖集合来说，过滤是一个非常有用的特性，因为这能让你建立标准化的，版本化的资源模板，并且每个套件在包含该模板的时候都可以对其进行自定义。一旦你掌握了如何使用过滤的，拆解的，包含共享资源的依赖，你就可以能抽象出那些重复的资源文件，生成一个通用的资源项目。</para>
       </section>
 
       <section>
-        <title>Summarizing Dependency Sets</title>
+        <title>依赖集合小结</title>
 
-        <para>Finally, it’s worth mentioning that dependency sets support the
-        same <sgmltag>fileMode</sgmltag> and <sgmltag>directoryMode</sgmltag>
-        configuration options that file sets do, though you should remember
-        that the <sgmltag>directoryMode</sgmltag> setting will only be used
-        when dependencies are unpacked.</para>
+        <para>最后，值得一提的是，依赖集合和文件集合一样支持同样的fileMode和directoryMode配置选项，但是你应该记住directoryMode只有在依赖被拆解的时候被使用。</para>
       </section>
     </section>
 
     <section>
-      <title><sgmltag>moduleSets</sgmltag> 部分</title>
+      <title><sgmltag>moduleSets</sgmltag> 元素</title>
 
-      <para>Multi-module builds are generally stitched together using the
-      parent and modules sections of interrelated <acronym>POM</acronym>s.
-      Typically, parent <acronym>POM</acronym>s specify their children in a
-      <sgmltag>modules</sgmltag> section, which under normal circumstances
-      causes the child <acronym>POM</acronym>s to be included in the build
-      process of the parent. Exactly how this relationship is constructed can
-      have important implications for the ways in which the Assembly plugin
-      can participate in this process, but we’ll discuss that more later. For
-      now, it’s enough to keep in mind this parent-module relationship as we
-      discuss the <sgmltag>moduleSets</sgmltag> section.</para>
+      <para>多模块构建通常会使用相互关联POM中的parent和modules元素来凝聚在一起。典型的来说，父POM在modules元素中指名其子模块，一般情况这就会使得子POM被包含到父项目的构建过程中。这种关系的具体定义对Assembly插件在构建过程中起的作用会造成很大影响，之后我们会详细讨论这一点。目前，只要求你在我们讨论moduleSets元素的时候记住父子关系。</para>
 
       <!--TODO: I think we need a simple example of how/why this would be used.-->
 
-      <para>Projects are stitched together into multi-module builds because
-      they are part of a larger system. These projects are designed to be used
-      together, and single module in a larger build has little practical value
-      on its own. In this way, the structure of the project’s build is related
-      to the way we expect the project (and its modules) to be used. If
-      consider the project from the user's perspective, it makes sense that
-      the ideal end goal of that build would be a single, distributable file
-      that the user can consume directly with minimum installation hassle.
-      Since Maven multi-module builds typically follow a top-down structure,
-      where dependency information, plugin configurations, and other
-      information trickles down from parent to child, it seems natural that
-      the task of rolling all of these modules into a single distribution file
-      should fall to the topmost project. This is where the
-      <sgmltag>moduleSet</sgmltag> comes into the picture.</para>
+      <para>很多项目被凝聚在一个多模块构建中是因为它们是一个更大系统的一部分。这些项目被设计成一起使用，在一个大型构建中的一个单独模块本身没有太大的实用价值。从某方面来说，项目构建的结构和我们期望该项目（以及它的模块）被使用的方式相关。如果从用户的角度考虑这个项目，那么可以认为构建的最终理想目标是提供一个单独的，可分发的，用户无须花太多安装的文件。由于Maven多模块项目基本上都遵循一个上下结构，其依赖信息，插件配置，还有其它信息自从父到子被继承，那么很自然的，我们会想到将所有模块凝聚成一个单独分发包的这样一个工作，最终会落到顶层项目的头上。这就是为什么会有moduleSet元素的原因。</para>
 
-      <para>Module sets allow the inclusion of resources that belong to each
-      module in the project structure into the final assembly archive. Just
-      like you can select a group of files to include in an assembly using a
-      <sgmltag>fileSet</sgmltag> and a <sgmltag>dependencySet</sgmltag>, you
-      can include a set of files and resources using a
-      <sgmltag>moduleSet</sgmltag> to refer to modules in a multi-module
-      build. They achieve this by enabling two basic types of module-specific
-      inclusion: file-based, and artifact-based. Before we get into the
-      specifics and differences between file-based and artifact-based
-      inclusion of module resources into an assembly, let’s talk a little
-      about selecting which modules to process.</para>
+      <para>模块集合能让属于项目结构中每个模块的资源被包含到最终的套件归档中。就像你可以使用fileSet和dependencySet选择包含一组文件一样，在一个多模块构建中，你可以使用moduleSet指定包含某些模块的文件和资源。通过激活两个基本类型的，模块特定的包含元素就可以实现这一点：file-based，和artifacts-based。在我们深入了解基于文件包含和基于构件包含之前，我们先简单讨论一下选择处理哪些模块。</para>
 
       <section>
-        <title>Module Selection</title>
+        <title>模块选择</title>
 
-        <para>By now, you should be familiar with
-        <sgmltag>includes</sgmltag>/<sgmltag>excludes</sgmltag> patterns as
-        they are used throughout the assembly descriptor to filter files and
-        dependencies. When you are referring to modules in an assembly
-        descriptor, you will also use the
-        <sgmltag>includes</sgmltag>/<sgmltag>excludes</sgmltag> patterns to
-        define rules which apply to different sets of modules. The difference
-        in <sgmltag>moduleSet</sgmltag> <sgmltag>includes</sgmltag> and
-        <sgmltag>excludes</sgmltag> is that these rules do not allow for
-        wildcard patterns. (As of the 2.2-beta-2 release, this feature has not
-        really seen much demand, so it hasn’t been implemented.) Instead, each
-        include or exclude value is simply the <varname>groupId</varname> and
-        <varname>artifactId</varname> for the module, separated by a colon,
-        like this:</para>
+        <para>到目前为止，你应该已经熟悉includes/excludes模式了，它们贯穿了整个套件描述符，用来过滤文件和依赖。当你在套件描述符中指向模块的时候，你就需要使用includes/excludes模式来定义规则，这些规则会被应用到一组模块上。moduleSet中的includes和excludes元素不同的地方在于它们不允许使用通配符模式。（到2.2-beta-2版本为止，还没看到这个特性有太大的需要，因此仍然未实现。）每个Include或者exclude的值都只是简单的某个模块的groupId和artifactId，通过冒号分隔，如：</para>
 
         <programlisting>groupId:artifactId</programlisting>
 
-        <para>In addition to <sgmltag>includes</sgmltag> and
-        <sgmltag>excludes</sgmltag>, the <sgmltag>moduleSet</sgmltag> also
-        supports an additional selection tool: the
-        <sgmltag>includeSubModules</sgmltag> flag (whose default value is
-        <varname>true</varname>). The parent-child relationship in any
-        multi-module build structure is not strictly limited to two tiers of
-        projects. In fact, you can include any number of tiers, or layers, in
-        your build. Any project that is a module of a module of the current
-        project is considered a sub-module. In some cases, you may want to
-        deal with each individual module in the build separately (including
-        sub-modules). For example, this is often simplest when dealing with
-        artifact-based contributions from these modules. To do this, you would
-        simply leave the <sgmltag>useSubModules</sgmltag> flag set to the
-        default of <varname>true</varname>.</para>
+        <para>除了includes和excludes，moduleSet还支持一种额外的选择工具：includeSubModules标记（默认值为true）。多模块构建中的父子关系并不会严格的限制在两层。事实上，你可以包含任意层的模块。一个当前项目模块包含的模块被认为是一个子模块。某些情况，你想要单独的处理构建中的每一个模块（包括子模块）。例如，通常处理基于构件的贡献的最简单的方法是在这些模块中处理，为此，你只要简单的让includeSubModules为默认值true。</para>
 
-        <para>When you’re trying to include files from each module’s directory
-        structure, you may wish to process that module’s directory structure
-        only once. If your project directory structure mirrors that of the
-        parent-module relationships that are included in the
-        <acronym>POM</acronym>s, this approach would allow file patterns like
-        **/src/main/java to apply not only to that direct module’s project
-        directory, but also to the directories of its own modules as well. In
-        this case you don’t want to process sub-modules directly (they will be
-        processed as subdirectories within your own project’s modules
-        instead), you should set the <sgmltag>useSubModules</sgmltag> flag to
-        <varname>false</varname>.</para>
+        <para>当你试图从每个模块的目录结构中包含文件的时候，你可能会希望一次整个的处理所有模块的目录。如果你的项目目录结构和POM中的父子结构一致，这种方式就能让模式如**/src/main/java不仅仅应用到当前模块的目录中，同时也应用到子模块的目录中。这种情况下你不想直接处理子模块（它们会以当前项目子目录的形式被处理），你应该将includeSubModules设置成false。</para>
 
-        <para>Once we’ve determined how module selection should proceed for
-        the module set in question, we’re ready to choose what to include from
-        each module. As mentioned above, this can include files or artifacts
-        from the module project.</para>
+        <para>在我们决定了选择哪些模块被处理之后，我们就可以选择每个模块包含的内容了。正如前面提到的，我们可以选择包含模块项目的文件或者构件。</para>
       </section>
 
       <section>
-        <title>Sources Section</title>
+        <title>源码选择</title>
 
-        <para>Suppose you want to include the source of all modules in your
-        project's assembly, but you would like to exclude a particular module.
-        Maybe you have a project named <varname>secret-sauce</varname> which
-        contains secret and sensitive code that you don't want to distribute
-        with your project. The simplest way to accomplish this is to use a
-        <sgmltag>moduleSet</sgmltag> which includes each project's directory
-        in <varname>${module.basedir.name}</varname> and which excludes the
-        <varname>secret-sauce</varname> module from the assembly.</para>
+        <para>假设你想要在套件中包含所有模块的源码，但是你希望排除某个特殊的模块。比如说可能你有一个名为secret-sauce的项目，它包含了一些你不想随着项目分发的秘密且敏感的代码。要做到这一点，最简单的方式是使用moduleSet，它在${module.basedir.name}中包含每个项目的目录，并且将secret-sauce排除在套件之外。</para>
 
         <example id="ex-include-exclude-moduleSet">
-          <title>Includes and Excluding Modules with a
-          <sgmltag>moduleSet</sgmltag></title>
+          <title>使用moduleSet包含和排除模块</title>
 
           <programlisting language="xml">&lt;assembly&gt;
   ...
@@ -1453,124 +1117,48 @@ I can add this back in later.  I didn't want to talk about it without an example
 &lt;/assembly&gt;</programlisting>
         </example>
 
-        <para>In <xref linkend="ex-include-exclude-moduleSet" />, since we’re
-        dealing with each module’s sources it’s simpler to deal only with
-        direct modules of the current project, handling sub-modules using
-        file-path wildcard patterns in the file set. We set the
-        <sgmltag>includeSubModules</sgmltag> element to
-        <varname>false</varname> so we don't have to worry about submodules
-        showing up in the root directory of the assembly archive. The
-        <sgmltag>exclude</sgmltag> element will take care of excluding the
-        <varname>secret-sauce</varname> module. We’re not going to include the
-        project sources for the secret-sauce module; they’re, well,
-        secret.</para>
+        <para>在<xref
+        linkend="ex-include-exclude-moduleSet" />中，由于我们是在处理每个模块的源码，因此只处理当前项目模块更简单，我们可以使用文件集合的文件路径通配符来处理子模块。这里我们将includeSubModules元素设为false，因此就不用担心子模块出现在套件的根目录中。exclude元素会负责排除secret-sauce模块。我们就不会包含这个秘密模块的源码了。</para>
 
-        <para>Normally, module sources are included in the assembly under a
-        subdirectory named after the module’s <varname>artifactId</varname>.
-        However, since Maven allows modules that are not in directories named
-        after the module project’s <varname>artifactId</varname>, it’s often
-        better to use the expression <varname>${module.basedir.name}</varname>
-        to preserve the module directory’s actual name
-        (<varname>${module.basedir.name}</varname> is the same as calling
-        <methodname>MavenProject.getBasedir().getName()</methodname>). It is
-        critical to remember that modules are not required to be
-        subdirectories of the project that declares them. If your project has
-        a particularly strange directory structure, you may need to resort to
-        special <sgmltag>moduleSet</sgmltag> declarations that include
-        specific project and account for your own project's
-        idiosyncracies.</para>
+        <para>一般来说，包含的模块源码会位于套件中一个名为模块artifactiId的子目录中。然而，因为Maven允许模块不位于根据其artifact命名的目录中，因此通常最好使用表达式${module.basedir.name}来保证模块目录的实际名称（${module.basedir.name}与MavenProject.getBasedir().getName()的值一致）。一定要记住模块并不是一定以子目录的形式存在。如果你的项目有一个十分奇怪的目录结构，你可能就需要凭借特殊的moduleSet声明来包含特定的项目，以及解释你项目的特异性。</para>
 
         <warning>
-          <para>Try to minimize your own project's idiosyncracies, while Maven
-          is flexible, if you find yourself doing too much configuration there
-          is likely an easier way.</para>
+          <para>尽量降低你项目的特异性，虽然Maven很灵活，但如果你发现你配置太多，就很可能有一种更简单的方式。</para>
         </warning>
 
-        <para>Continuing through <xref
-        linkend="ex-include-exclude-moduleSet" />, since we’re not processing
-        sub-modules explicitly in this module set, we need to make sure
-        sub-module directories are not excluded from the source directories we
-        consider for each direct module. By setting the
-        <sgmltag>excludeSubModuleDirectories</sgmltag> flag to
-        <varname>false</varname>, this allows us to apply the same file
-        pattern to directory structures within a sub-module of the one we’re
-        processing. Finally in <xref
-        linkend="ex-include-exclude-moduleSet" />, we’re not interested in any
-        output of the build process for this module set. We exclude the
-        target/ directory from all modules.</para>
+        <para>继续讨论<xref
+        linkend="ex-include-exclude-moduleSet" />，由于我们没有在这个模块集合中显式的处理子模块，我们需要确保子模块的目录内容没有被排除在外。通过设置excludeSubModuleDirectories为true，我们就可以在子模块的目录中应用相同的文件模式。最后在<xref
+        linkend="ex-include-exclude-moduleSet" />中，我们对模块集合构建过程中的任何输出都没有兴趣，因此我们从所有模块中排除target/目录。</para>
 
-        <para>It’s also worth mentioning that the <sgmltag>sources</sgmltag>
-        section supports <sgmltag>fileSet</sgmltag>-like elements directly
-        within itself, in addition to supporting nested
-        <sgmltag>fileSets</sgmltag>. These configuration elements are used to
-        provide backward compatibility to previous versions of the Assembly
-        plugin (versions 2.1 and under) that didn’t support multiple distinct
-        file sets for the same module without creating a separate module set
-        declaration. They are deprecated, and should not be used.</para>
+        <para>还有一点值得一提的是，除了支持嵌套fileSets以外，sources元素本身直接支持所有类fileSet的元素。这些配置元素用来提供对之前Aseembly插件版本（版本2.1及之前）的向前兼容性，之前的版本在没有创建一个单独的模块集合声明的情况下，不支持同一模块的多个文件集合。这种用法是被废弃的，不应该被使用。</para>
       </section>
 
       <section>
-        <title>Interpolation of <sgmltag>outputDirectoryMapping</sgmltag> in
-        <sgmltag>moduleSets</sgmltag></title>
+        <title><sgmltag>moduleSets中outputDirectoryMapping的插值</sgmltag></title>
 
-        <para>In <xref linkend="sect-output-location" />, we used the element
-        <sgmltag>outputDirectoryMapping</sgmltag> to change the name of the
-        directory under which each module’s sources would be included. The
-        expressions contained in this element are resolved in exactly the same
-        way as the <sgmltag>outputFileNameMapping</sgmltag>, used in
-        dependency sets (see the explanation of this algorithm in <xref
-        linkend="sect-output-algorithm" />).</para>
+        <para>在<xref
+        linkend="sect-output-location" />中，我们使用元素outputDirectoryMapping来更改包含每个模块源码的目录名称。解析该表达式元素的方式和依赖集合中解析outputFileNameMapping元素的方式完全一致（见<xref
+        linkend="sect-output-algorithm" />中该算法的解释）。</para>
 
-        <para>In <xref linkend="ex-include-exclude-moduleSet" />, we used the
-        expression <varname>${module.basedir.name}</varname>. You might notice
-        that the root of that expression, <varname>module</varname>, is not
-        listed in the mapping-resolution algorithm from the dependency sets
-        section; this object root is specific to configurations within
-        <sgmltag>moduleSets</sgmltag>. It works in exactly the same way as the
-        <varname>${artifact.*}</varname> references available in the
-        <sgmltag>outputFileNameMapping</sgmltag> element, except it is applied
-        to the module’s <classname>MavenProject</classname>,
-        <classname>Artifact</classname>, and
-        <classname>ArtifactHandler</classname> instances instead of those from
-        a dependency artifact.</para>
+        <para>在<xref
+        linkend="ex-include-exclude-moduleSet" />中，我们使用了表达式${module.basedir.name}。你可能会注意到该表达式的根元素，module，并没有在依赖集合的匹配解析算法中列出；这个根元素moduleSets配置特有的。它其实和outputFileNameMapping元素中使用${artifacts.*}引用一样，只是这里应用到了模块的MavenProject,
+        Artifact, 和ArtifactHandler上，而非依赖构件。</para>
       </section>
 
       <section>
-        <title>Binaries section</title>
+        <title>字节码选择</title>
 
-        <para>Just as the <sgmltag>sources</sgmltag> section is primarily
-        concerned with including a module in its source form, the
-        <sgmltag>binaries</sgmltag> section is primarily concerned with
-        including the module’s build output, or its artifacts. Though this
-        section functions primarily as a way of specifying
-        <sgmltag>dependencySets</sgmltag> that apply to each module in the
-        set, there are a few additional features unique to module artifacts
-        that are worth exploring: <sgmltag>attachmentClassifier</sgmltag> and
-        <sgmltag>includeDependencies</sgmltag>. In addition, the
-        <sgmltag>binaries</sgmltag> section contains options similar to the
-        <sgmltag>dependencySet</sgmltag> section, that relate to the handling
-        of the module artifact itself. These are: <sgmltag>unpack</sgmltag>,
-        <sgmltag>outputFileNameMapping</sgmltag>,
-        <sgmltag>outputDirectory</sgmltag>, <sgmltag>directoryMode</sgmltag>,
-        and <sgmltag>fileMode</sgmltag>. Finally, module binaries can contain
-        a <sgmltag>dependencySets</sgmltag> section, to specify how each
-        module’s dependencies should be included in the assembly archive.
-        First, let’s take a look at how the options mentioned here can be used
-        to manage the module’s own artifacts.</para>
+        <para>源码选择主要关注以源码的形式包含一个模块，而字节码选择就主要关注包含模块的构建输出，或者说构件。虽然这一部分运行就效果就像声明一个依赖集合并应用到每个模块上，但这里还有一些额外的特性只对模块构件有效，这些元素值得讨论：attachmentClassifier和includeDependencies。此外，biniaries元素包含了一些与dependencySet元素类似的选项，它们关系到模块构建本身的处理。它们是：unpack,
+        ouputFileNameMapping, outputDirectory, directoryMode,
+        以及fileMode。最后，模块字节码可以包含一个dependencySets元素，用来指定每个模块的依赖应该如何被包含到套件归档中。首先，让我们看一下这里提到的选项如何被用来管理模块本身的构件。</para>
 
-        <para>Suppose we want to include the javadoc jars for each of our
-        modules inside our assembly. In this case, we don’t care about
-        including the module dependencies; we just want the javadoc jar.
-        However, since this particular jar is always going to be present as an
-        attachment to the main project artifact, we need to specify which
-        classifier to use to retrieve it. For simplicity, we won’t cover
-        unpacking the module javadoc jars, since this configuration is exactly
-        the same as what we used for dependency sets earlier in this chapter.
-        The resulting module set might look similar to <xref
-        linkend="ex-include-javadoc-moduleset" />.</para>
+        <para>假设你想要在套件中包含每个模块的javadoc jar。这时，我们不考虑包含模块依赖；我们只要javadoc
+        jar。然而，由于这个特殊的jar是项目主构件的一个附属构件，我们需要指定它的分类器以获取该jar。简单起见，我们不会涉及到拆解该模块的jajvadoc
+        jar，拆解的配置和我们之前配置依赖集合完全一样。最后的模块集合看起来会像<xref
+        linkend="ex-include-javadoc-moduleset" />。</para>
 
         <example id="ex-include-javadoc-moduleset">
-          <title>Including JavaDoc from Modules in an Assembly</title>
+          <title>在套件中包含模块的JavaDoc</title>
 
           <programlisting language="xml">&lt;assembly&gt;
   ...
@@ -1587,45 +1175,18 @@ I can add this back in later.  I didn't want to talk about it without an example
 &lt;/assembly&gt;</programlisting>
         </example>
 
-        <para>In <xref linkend="ex-include-javadoc-moduleset" />, we don’t
-        explicitly set the <sgmltag>includeSubModules</sgmltag> flag, since
-        it’s <varname>true</varname> by default. However, we definitely want
-        to process all modules - even sub-modules - using this module set,
-        since we’re not using any sort of file pattern that could match on
-        sub-module directory structures within. The
-        <sgmltag>attachmentClassifier</sgmltag> grabs the attached artifact
-        with the javadoc classifier for each module processed. The
-        <sgmltag>includeDependencies</sgmltag> element tells the Assembly
-        plugin that we're not interested in any of the module's dependencies,
-        just the javadoc attachment. Finally, the
-        <sgmltag>outputDirectory</sgmltag> element tells the Assembly plugin
-        to put all of the javadoc jars into a directory named
-        <filename>apidoc-jars/</filename> off of the assembly root
-        directory.</para>
+        <para>在<xref
+        linkend="ex-include-javadoc-moduleset" />中，我们没有显式的设置includeSubModules标记，它默认为true。我们当然想要使用该模块集合来处理所有的模块，包括子模块，因为我们没有使用任何可以匹配子模块目录结构的文件模式。attachmentClassifier会抓取每个被处理模块的分类器为classifier的附属构件。而includeDependencies元素告诉Assembly插件，我们对模块的依赖没有兴趣。最后，outputDirectory元素告诉Assembly插件将所有javadoc
+        jar放到套件跟目录下名为apidoc-jars的目录中。</para>
 
-        <para>Although we’re not doing anything too complicated in this
-        example, it’s important to understand that the same changes to the
-        expression-resolution algorithm discussed for the
-        <sgmltag>outputDirectoryMapping</sgmltag> element of the sources
-        section also applies here. That is, whatever was available as
-        <varname>${artifact.*}</varname> inside a
-        <sgmltag>dependencySet</sgmltag>’s
-        <sgmltag>outputFileNameMapping</sgmltag> configuration is also
-        available here as <varname>${module.*}</varname>. The same applies for
-        <sgmltag>outputFileNameMapping</sgmltag> when used directly within a
-        <sgmltag>binaries</sgmltag> section.</para>
+        <para>虽然在本例中我们没有做什么特别复杂的配置，但重点需要理解的是，source元素中关于outputDirectoryMapping子元素讨论的表达式解析算法这里同样适用。也就是说，任何dependencySet的outputFileNameMapping配置中可用的<varname>${artifact.*}</varname>
+        ，在这里都可以通过<varname>${module.*}</varname>的形式使用。它们起到的效果是一样的。</para>
 
-        <para>Finally, let’s examine an example where we simply want to
-        process the module’s artifact and its runtime dependencies. In this
-        case, we want to separate the artifact set for each module into
-        separate directory structures, according to the module’s
-        <varname>artifactId</varname> and <varname>version</varname>. The
-        resulting module set is surprisingly simply, and it looks like the
-        listing in <xref linkend="ex-the-big-include" />:</para>
+        <para>最后，让我们看一个例子，这里我们想要处理模块的构件以及运行时依赖。在这种情况下，我们需要根据模块的artifactId和version将每个模块的构件集合分离到单独的目录结构中。最终的模块结合惊人得简单，就像<xref
+        linkend="ex-the-big-include" />：</para>
 
         <example id="ex-the-big-include">
-          <title>Including Module Artifacts and Dependencies in an
-          Assembly</title>
+          <title>在套件中包含模块构件和依赖</title>
 
           <programlisting language="xml">&lt;assembly&gt;
   ...
@@ -1645,265 +1206,100 @@ I can add this back in later.  I didn't want to talk about it without an example
 &lt;/assembly&gt;</programlisting>
         </example>
 
-        <para>In <xref linkend="ex-the-big-include" />, we’re using the empty
-        <sgmltag>dependencySet</sgmltag> element here, since that should
-        include all runtime dependencies by default, with no configuration.
-        With the <sgmltag>outputDirectory</sgmltag> specified at the binaries
-        level, all dependencies should be included alongside the module’s own
-        artifact in the same directory, so we don’t even need to specify that
-        in our dependency set.</para>
+        <para>在<xref
+        linkend="ex-the-big-include" />中，我们使用了空的dependencySet元素，这时因为默认情况下，没有任何配置它就会包含所有运行时依赖。这里我们设置了字节码集合的outputDirectory，所有依赖以及模块主构件都会被包含到这个目录中，因此，我们设置不需要再去配置依赖集合。</para>
 
-        <para>For the most part, module binaries are fairly straightforward.
-        In both parts - the main part, concerned with handling the module
-        artifact itself, and the dependency sets, concerned with the module’s
-        dependencies - the configuration options are very similar to those in
-        a dependency set. Of course, the binaries section also provides
-        options for controlling whether dependencies are included, and which
-        main-project artifact you want to use.</para>
+        <para>很大程度上，模块字节码直接明了。两个部分——主要部分，关注处理模块构件本身，和依赖集合，关注模块依赖——它们的配置选项都和依赖集合的配置类似。当然，binaries元素同时还提供了一些选项用来控制是否包含依赖，以及你想要使用那个主项目构件。</para>
 
-        <para>Like the sources section, the binaries section contains a couple
-        of configuration options that are provided solely for backward
-        compatibility, and should be considered deprecated. These include the
-        includes and excludes sub-sections.</para>
+        <para>如同sources元素一样，binaries元素包含了一些目的仅为向前兼容性的元素，它们应该被弃用。这包括了includes和excludes子元素。</para>
       </section>
 
       <section>
-        <title><sgmltag>moduleSets</sgmltag>, Parent <acronym>POM</acronym>s
-        and the <sgmltag>binaries</sgmltag> Section</title>
+        <title><sgmltag>moduleSets</sgmltag>,
+        父<acronym>POM</acronym>，和<sgmltag>binaries</sgmltag>元素</title>
 
-        <para>Finally, we close the discussion about module handling with a
-        strong warning. There are subtle interactions between Maven’s internal
-        design as it relates to parent-module relationships and the execution
-        of a module-set’s binaries section. When a <acronym>POM</acronym>
-        declares a parent, that parent must be resolved in some way or other
-        before the <acronym>POM</acronym> in question can be built. If the
-        parent is in the Maven repository, there is no problem. However, as of
-        Maven 2.0.9 this can cause big problems if that parent is a
-        higher-level <acronym>POM</acronym> in the same build, particularly if
-        that parent <acronym>POM</acronym> expects to build an assembly using
-        its modules’ binaries.</para>
+        <para>最后，我们用一个警告来结束模块处理的讨论。Maven内部设计中关于父-模块关系的部分与模块集合binaries元素的运行有着微妙的相互影响。当一个POM声明一个父项目，那么父项目就必须在当前项目被构建之前以某种方式解析。如果父项目在Maven仓库中，这没什么问题。然而，从Maven
+        2.0.9起，如果父项目是同一构建下的上一层POM，这就会出现问题，尤其是在父POM期望使用子项目的字节码构建套件的时候。</para>
 
-        <para>Maven 2.0.9 sorts projects in a multi-module build according to
-        their dependencies, with a given project’s dependencies being built
-        ahead of itself. The problem is the parent element is considered a
-        dependency, which means the parent project’s build must complete
-        before the child project is built. If part of that parent’s build
-        process includes the creation of an assembly that uses module
-        binaries, those binaries will not exist yet, and therefore cannot be
-        included, causing the assembly to fail. This is a complex and subtle
-        issue, which severely limits the usefulness of the module binaries
-        section of the assembly descriptor. In fact, it has been filed in the
-        bug tracker for the Assembly plugin at: <ulink
-        url="http://jira.codehaus.org/browse/MASSEMBLY-97">http://jira.codehaus.org/browse/MASSEMBLY-97</ulink>.
-        Hopefully, future versions of Maven will find a way to restore this
-        functionality, since the parent-first requirement may not be
-        completely necessary.</para>
+        <para>Maven
+        2.0.9根据依赖关系来安排多模块项目构建的顺序，某个模块的依赖总在该模块之前被构建。问题在于，父项目也被看成是一个依赖，也就是说，父项目的构建必须在子项目构建之前就完成。如果父项目构件的过程包括创建一个套件，而这个套件使用了模块字节码，而这些字节码还不存在，也就不能被包含，那么Assembly插件就会失败。这是一个复杂且微妙的问题，严重影响了套件描述符模块字节码小节的用途。事实上，已经有一个Assembly插件的bug记录来跟踪这一问题：<ulink
+        url="http://jira.codehaus.org/browse/MASSEMBLY-97">http://jira.codehaus.org/browse/MASSEMBLY-97</ulink>。希望未来版本的Maven能够找到方法来修复这一功能，因为很多时候父项目必须首先构建这一需求并不是完全必要。</para>
       </section>
     </section>
 
     <section>
-      <title>Repositories Section</title>
+      <title>Repositories元素</title>
 
-      <para>The repositories section represents a slightly more exotic feature
-      in the assembly descriptor, since few applications other than Maven can
-      take full advantage of a Maven-repository directory structure. For this
-      reason, and because many of its features closely resemble those in the
-      <sgmltag>dependencySets</sgmltag> section, we won’t spend too much time
-      on the repositories section of the assembly descriptor. In most cases,
-      users who understand dependency sets should have no trouble constructing
-      repositories via the Assembly plugin. We're not going to motivate the
-      <sgmltag>repositories</sgmltag> section; we're not going to go through a
-      the business of setting up a use case and walking you through the
-      process. We're just going to bring up a few caveats for those of you who
-      find the need to use the <sgmltag>repostiories</sgmltag> section.</para>
+      <para>套件描述符中的repositories元素是可以说是一个舶来品，因为除了Maven自己很少有应用能够利用Maven仓库的目录结构。此外，repositories元素中的很多功能与dependencySets元素十分类似，因此我们这里不花太多时间在这上面。大部分情况下，理解依赖集合的用户都能很轻松的在套件描述符中编写正确的repositories元素。我们就不详细介绍repositories元素了；也不会再建立一个用例再一步步解释。但是，如果你发现自己需要使用repositories元素，我还是警告你小心。</para>
 
       <!--TODO: We probably need to motivate why you would ever want to do this.  Right now, this section
 doesn't make sense to new users.-->
 
-      <para>Having said that, there are a two features particular to the
-      repositories section that deserve some mention. The first is the
-      <sgmltag>includeMetadata</sgmltag> flag. When set to
-      <varname>true</varname> it includes metadata such as the list of real
-      versions that correspond to <varname>-SNAPSHOT</varname> virtual
-      versions, and by default it’s set to <varname>false</varname>. At
-      present, the only metadata included when this flag is
-      <varname>true</varname> is the information downloaded from Maven’s
-      central repository.</para>
+      <para>说过这些之后，这里值得一提的是两个repositories元素特有的特征。第一个是includeMetadata标记。当它为true的时候，套件就会包含仓库元数据，如与-SNAPSHOT虚拟版本对应的一列真实版本，默认情况下，该标记为false。目前，当这个标记为true的时候，只有从Maven中央仓库下载的元数据会被包含进来。</para>
 
-      <para>The second feature is called
-      <sgmltag>groupVersionAlignments</sgmltag>. Again, this section is a list
-      of individual <sgmltag>groupVersionAlignment</sgmltag> configurations,
-      whose purpose is to normalize all included artifacts for a particular
-      <varname>groupId</varname> to use a single <varname>version</varname>.
-      Each alignment entry consists of two mandatory elements -
-      <varname>id</varname> and <varname>version</varname> - along with an
-      optional section called <sgmltag>excludes</sgmltag> that supplies a list
-      of <varname>artifactId</varname> string values which are to be excluded
-      from this realignment. Unfortunately, this realignment doesn’t seem to
-      modify the <acronym>POM</acronym>s involved in the repository, neither
-      those related to realigned artifacts nor those that depend on realigned
-      artifacts, so it’s difficult to imagine what the practical application
-      for this sort of realignment would be.</para>
+      <para>第二个特性名为groupVersionAlignments。同样，该元素包含一列单独的groupVersionAlignment子元素，该子元素的目的是规范某个特定groupId下包含的所有构件使用一个单独的版本。每个groupVersionAlignment元素包含两个必须的子元素——id和version——还包含可选的excludes元素，该excludes元素可以包含一列artifactId的字符串值，使其被排除在外。不幸的是，这种版本的校正不会修改仓库中的POM，不管是被校正的构件还是依赖于它们的构件，其POM都不会被修改，因此难以想象实际用到这种校正的应用会是什么样子。</para>
 
-      <para>In general, it’s simplest to apply the same principles you would
-      use in dependency sets to repositories when adding them to your assembly
-      descriptor. While the repositories section does support the above extra
-      options, they are mainly provided for backward compatibility, and will
-      probably be deprecated in future releases.</para>
+      <para>总的来说，当你添加repositories元素的时候，同样遵循使用依赖集合的原则。虽然repositories元素支持上述额外的特性，但这主要还是为了提供向后兼容性，因此以后的版本中可能会被废弃。</para>
     </section>
 
     <section>
-      <title>Managing the Assembly’s Root Directory</title>
+      <title>管理套件的根目录</title>
 
-      <para>Now that we’ve made it through the main body of the assembly
-      descriptor, we can close the discussion of content-related descriptor
-      sections with something lighter: root-directory naming and
-      site-directory handling.</para>
+      <para>到现在为止我们仔细了解的套件描述符的主体部分，我们可以用相对轻量级的内容来结束关于描述符内容相关的叙述：根目录命名和站点目录处理。</para>
 
-      <para>Some may consider it a stylistic concern, but it’s often important
-      to have control over the name of the root directory for your assembly,
-      or whether the root directory is there at all. Fortunately, two
-      configuration options in the root of the assembly descriptor make
-      managing the archive root directory simple:
-      <sgmltag>includeBaseDirectory</sgmltag> and
-      <sgmltag>baseDirectory</sgmltag>. In cases like executable jar files,
-      you probably don’t want a root directory at all. To skip it, simply set
-      the <sgmltag>includeBaseDirectory</sgmltag> flag to
-      <varname>false</varname> (it’s <varname>true</varname> by default). This
-      will result in an archive that, when unpacked, may create more than one
-      directory in the unpack target directory. While this is considered bad
-      form for archives that are meant to be unpacked before use, it’s not so
-      bad for archives that are consumable as-is.</para>
+      <para>有人可能认为这只是形式考虑，但是拥有对于套件根目录命名的控制，或者是否需要根目录，都通常很重要。幸运的是，套件描述符根元素下的两个配置选项使得管理归档根目录变得简单，它们是：includeBaseDirectory和baseDirectory。如果套件是一个可运行jar文件，你可能就完全不想要根目录。为了忽略根目录，只要简单的将includeBaseDirectory设置为false（默认为true）。这样，生成的归档在打开的时候，就可能在拆解目标目录创建多个目录。如果一个归档在使用之前需要拆解，这通常是一种不好的方式，最好是一个归档能够照原样使用。</para>
 
-      <para>In other cases, you may want to guarantee the name of the archive
-      root directory regardless of the <acronym>POM</acronym>’s version or
-      other information. By default, the <sgmltag>baseDirectory</sgmltag>
-      element has a value equal to
-      <varname>${project.artifactId}-${project.version}</varname>. However, we
-      can easily set this element to any value that consists of literal
-      strings and expressions which can be interpolated from the current
-      <acronym>POM</acronym>, such as
-      <varname>${project.groupId}-${project.artifactId}</varname>. This could
-      be very good news for your documentation team! (We all have those,
-      right?)</para>
+      <para>在一些其它情况，你可能想要保证归档根目录的名称与POM的版本或者其它信息一致。默认情况下，baseDirectory的值就等于<varname>${project.artifactId}-${project.version}</varname>。但是，我们可以很简单的更改这个元素的值，可以是一个字符串字面量，或者是一个根据当前POM进行插值的表达式，比如<varname>${project.groupId}-${project.artifactId}</varname>。对你的文档团队来说，这是个好消息！（我们都拥有这样的团队，是吧？）</para>
 
-      <para>Another configuration available is the
-      <sgmltag>includeSiteDirectory</sgmltag> flag, whose default value is
-      <varname>false</varname>. If your project build has also constructed a
-      website document root using the site lifecycle or the Site plugin goals,
-      that output can be included by setting this flag to
-      <varname>true</varname>. However, this feature is a bit limited, since
-      it only includes the <sgmltag>outputDirectory</sgmltag> from the
-      reporting section of the current <acronym>POM</acronym> (by default,
-      <filename>target/site</filename>) and doesn’t take into consideration
-      any site directories that may be available in module projects. Use it if
-      you want, but a good <sgmltag>fileSet</sgmltag> specification or
-      <sgmltag>moduleSet</sgmltag> specification with sources configured could
-      serve equally well, if not better. This is yet another example of legacy
-      configuration currently supported by the Assembly plugin for the purpose
-      of backward compatibility. Your mileage may vary. If you really want to
-      include a site that is aggregated from many modules, you'll want to
-      consider using a <sgmltag>fileSet</sgmltag> or
-      <sgmltag>moduleSet</sgmltag> instead of setting
-      <sgmltag>includeSiteDirectory</sgmltag> to
-      <varname>true</varname>.</para>
+      <para>另外一个可用的配置选项是includeSiteDirectory，其默认值是false。如果你项目的构建同时使用了site生命周期的Site插件目标创建了web站点文档，你就可以通过将该选项设置成true来包含这些内容。不过，这个特性有一些限制，只有当前POM的文档部分会被包含（默认情况是target/site），而所有子模块的站点目录不在考虑之中。如果你想要用，就用吧，不过一个适当配置的fileSet或者moduleSet可以完成同样的任务，可能还会更好。其实这里又是一个Assembly插件考虑向前兼容性的例子，你最好还是使用fileSet或者moduleSet元素，而非将includeSiteDirectory设置成true。</para>
     </section>
 
     <section id="sect-componentDescriptors">
-      <title><sgmltag>componentDescriptors</sgmltag> and
-      <sgmltag>containerDescriptorHandlers</sgmltag></title>
+      <title><sgmltag>componentDescriptors</sgmltag>和<sgmltag>containerDescriptorHandlers</sgmltag></title>
 
-      <para>To round out our exploration of the assembly descriptor, we should
-      touch briefly on two other sections:
-      <sgmltag>containerDescriptorHandlers</sgmltag> and
-      <sgmltag>componentDescriptors</sgmltag>. The
-      <sgmltag>containerDescriptorHandlers</sgmltag> section refers to custom
-      components that you use to extend the capabilities of the Assembly
-      plugin. Specifically, these custom components allow you to define and
-      handle special files which may need to be merged from the multiple
-      constituents used to create your assembly. A good example of this might
-      be a custom container-descriptor handler that merged
-      <filename>web.xml</filename> files from constituent war or war-fragment
-      files included in your assembly, in order to create the single
-      web-application descriptor required for you to use the resulting
-      assembly archive as a war file.</para>
+      <para>为了丰满我们关于套件描述符的讨论，我们还应该简单看一下另外两个元素：containerDescriptorHandlers和componentDescriptors。containerDescriptorHandlers元素指向一个自定义的组件，你可以用该组件来扩展Assembly插件的功能。具体来说，这些自定义的组件能让你定义及处理一些特殊的文件，它们可能需要被从各个成分（constituent）归并到一起以创建你的套件。举个很好的例子，可能有一个自定义容器描述符处理器，用来从一个成分war或者war片段文件归并web.xml到你的套件中，这样你就可以在最终的套件中保持一个单独的web应用描述符，并将其看成一个war文件。</para>
 
-      <para>The <sgmltag>componentDescriptors</sgmltag> section allows you to
-      reference external assembly-descriptor fragments and include them in the
-      current descriptor. Component references can be any of the
-      following:</para>
+      <para>componentDescriptors元素允许你引用外部的套件描述符片段，然后将其包含到当前的描述符中。组件引用可以是如下任何一种：</para>
 
       <orderedlist>
         <listitem>
-          <para>Relative file paths:
+          <para>相对文件路径：
           <filename>src/main/assembly/component.xml</filename></para>
         </listitem>
 
         <listitem>
-          <para>Artifact references:
+          <para>构件引用：
           <varname>groupId:artifactId:version[:type[:classifier]]</varname></para>
         </listitem>
 
         <listitem>
-          <para>Classpath resources:
+          <para>Classpath资源：
           <filename>/assemblies/component.xml</filename></para>
         </listitem>
 
         <listitem>
-          <para>URLs: <ulink
+          <para>URL： <ulink
           url="http://www.sonatype.com/component.xml">http://www.sonatype.com/component.xml</ulink></para>
         </listitem>
       </orderedlist>
 
-      <para>Incidentally, when resolving a component descriptor, the Assembly
-      plugin tries those different strategies in that exact order. The first
-      one to succeed is used.</para>
+      <para>顺便说一下，在解析组件描述符的时候，Assembly插件严格的按照上面的顺序采取不同的策略。第一个成功的策略会被使用。</para>
 
-      <para>Component descriptors can contain many of the same
-      content-oriented sections available in the assembly descriptor itself,
-      with the exception of <sgmltag>moduleSets</sgmltag>, which is considered
-      so specific to each project that it’s not a good candidate for reuse.
-      Also included in a component descriptor is the
-      <sgmltag>containerDescriptorHandlers</sgmltag> section, which we briefly
-      discussed above. Component descriptors cannot contain formats, assembly
-      id’s, or any configuration related to the base directory of the assembly
-      archive, all of which are also considered unique to a particular
-      assembly descriptor. While it may make sense to allow sharing of the
-      formats section, this has not been implemented as of the 2.2-beta-2
-      Assembly-plugin release.</para>
+      <para>组件描述符可以包含大多数组件描述符中可用的关于内容的元素，但是moduleSets除外，这时因为该元素被认为是每个项目特定的，不该被重用。组件描述符中还可以包含的元素是containerDescriptorHandlers，这个之前已经简要过。组件描述符不能包含格式，套件ID，或者其它任何与套件归档基础目录相关的配置，所有这些配置都是特定套件描述符唯一的。虽然共享格式元素是有道理的，但在2.2-beta-2版本的Assembly插件中，还没有实现。</para>
     </section>
   </section>
 
   <section>
-    <title>Best Practices</title>
+    <title>最佳实践</title>
 
-    <para>The Assembly plugin provides enough flexibility to solve many
-    problems in a number of different ways. If you have a unique requirement
-    for your project, there's a good chance that you can use the methods
-    documented in this chapter to achieve almost any assembly structure. This
-    section of the chapter details some common best practices which, if
-    adhered to, will make your experiences with the assembly plugin more
-    productive and less painful.</para>
+    <para>Assembly插件提供了足够的灵活性，以很多不同的方式处理许多问题。如果你的项目有特定的需求，那么你完全可以使用本章叙述的方法来实现几乎任何的套件结构。本节，我们讨论讨论一些最佳实践，如果你遵循它们，你就能更高效的使用Assembly插件，同时也能减少不必要的痛苦。</para>
 
     <section>
-      <title>Standard, Reusable Assembly Descriptors</title>
+      <title>标准的，可重用的套件描述符</title>
 
-      <para>Up to now, we’ve been talking mainly about one-off solutions for
-      building a particular type of assembly. But what do you do if you have
-      dozens of projects that all need a particular type of assembly? In
-      short, how can we reuse the effort we’ve invested to get our assemblies
-      just the way we like them across more than one project without copying
-      and pasting our assembly descriptor?</para>
+      <para>到目前位置，我们主要讨论了一些针对某个特定套件的一次性解决方案。但是如果你有几十个项目需要某个特定类型的套件怎么办？简言之，我们如何才能重用我们为某个套件所花的精力，并将其使用到多个项目中去，而不是复制粘贴套件描述符？</para>
 
-      <para>The simplest answer is to create a standardized, versioned
-      artifact out of the assembly descriptor, and deploy it. Once that’s
-      done, you can specify that the Assembly plugin section of your project’s
-      <acronym>POM</acronym> include the assembly-descriptor artifact as a
-      plugin-level dependency, which will prompt Maven to resolve and include
-      that artifact in the plugin’s classpath. At that point, you can use the
-      assembly descriptor via the <sgmltag>descriptorRefs</sgmltag>
-      configuration section in the Assembly plugin declaration. To illustrate,
-      consider this example assembly descriptor:</para>
+      <para>最简单的答案是从套件描述符中创建一个标准化的，版本化的构件，并将其部署。一旦完成了这一步，你就可以在你项目的POM中指定Assembly插件的plugin元素以插件级别依赖的形式去使用套件描述符构件，这会让Maven解析并包含套件描述符至插件的classpath中。这时，你就可以通过配置Assembly插件的descriptorRefs元素来使用这个套件描述符。请看如下的套件描述符：</para>
 
       <programlisting language="xml">&lt;assembly&gt;
   &lt;id&gt;war-fragment&lt;/id&gt;
@@ -1927,17 +1323,9 @@ doesn't make sense to new users.-->
   &lt;/fileSets&gt;
 &lt;/assembly&gt;</programlisting>
 
-      <para>Included in your project, this descriptor would be a useful way to
-      bundle the project contents so that it could be unpacked directly into
-      an existing web application in order to add to it (for adding an
-      extending feature, say). However, if your team builds more than one of
-      these web-fragment projects, it will likely want to reuse this
-      descriptor rather than duplicating it. To deploy this descriptor as its
-      own artifact, we’re going to put it in its own project, under the
-      <filename>src/main/resources/assemblies</filename> directory.</para>
+      <para>在你的项目中使用它，所有项目的内容就会被打包在一起，然后可以直接解压添加到现存web应用中（为了添加一个扩展特性）。然而，如果你的团队构建了很多个web片段项目，那么你就会想要重用该描述符，而非复制它。为了将该描述符以构件的形式部署，我们就要将其放到一个项目中，位于<filename>src/main/resources/assemblies</filename>目录。</para>
 
-      <para>The project structure for this assembly-descriptor artifact will
-      look similar to the following:</para>
+      <para>这个套件描述符构件的项目结构看起来如下：</para>
 
       <programlisting>|-- pom.xml
 `-- src
@@ -1947,23 +1335,10 @@ doesn't make sense to new users.-->
                 `-- web-fragment.xml
 </programlisting>
 
-      <para>Notice the path of our <varname>web-fragment</varname> descriptor
-      file. By default, Maven includes the files from the
-      <filename>src/main/resources</filename> directory structure in the final
-      jar, which means our assembly descriptor will be included with no extra
-      configuration on our part. Also, notice the
-      <filename>assemblies/</filename> path prefix, the Assembly plugin
-      expects this path prefix on all descriptors provided in the plugin
-      classpath. It’s important that we put our descriptor in the appropriate
-      relative location, so it will be picked up by the Assembly plugin as it
-      executes.</para>
+      <para>注意web-fragment.xml文件的位置。默认情况下，Maven会将整个src/main/resources目录打包到最终的jar中，这里，如果没有额外的配置，套件描述符也就会被打包。同时注意assemblies/这一路径前缀，Assembly插件需要所有插件classpath中的描述符拥有这一前缀。将我们的描述符放到恰当的相对路径十分重要，这样Assembly才能够在运行的时候识别它们。</para>
 
-      <para>Remember, this project is separate from your actual
-      <varname>web-fragment</varname> project now; the assembly descriptor has
-      become its own artifact with its own version and, possibly, its own
-      release cycle. Once you install this new project using Maven, you’ll be
-      able to reference it in your <varname>web-fragment</varname> projects.
-      For clarity, the build process should look something like this:</para>
+      <para>记住，现在这个项目已经和你实际的web-fragment项目分离了；套件描述符拥有了自己的构件，自己的版本，甚至有可能的话，自己的发布周期。一旦你使用Maven
+      install了这一新的项目，你就能够在web-fragment项目中使用它。如果还不清楚，检查构建过程，看起来应该如下：</para>
 
       <screen>$ <command>mvn install</command>
 (...)
@@ -1977,10 +1352,7 @@ doesn't make sense to new users.-->
 [INFO] Total time: 5 seconds
 (...)</screen>
 
-      <para>Since there are no sources for the
-      <varname>web-fragment-descriptor</varname> project, the resulting jar
-      artifact will include nothing but our <varname>web-fragment</varname>
-      assembly descriptor. Now, let’s use this new descriptor artifact:</para>
+      <para>由于web-fragment-descriptor项目没有源码，得到的jar除了包含web-fragment套件描述符什么都没有。现在，让我们使用这个新的描述符构件：</para>
 
       <programlisting language="xml">&lt;project&gt;
   (...)
@@ -2020,48 +1392,21 @@ doesn't make sense to new users.-->
 &lt;/project&gt;
 </programlisting>
 
-      <para>Two things are special about this Assembly plugin
-      configuration:</para>
+      <para>在这个Assembly插件配置中，有两个特殊的地方：</para>
 
       <itemizedlist>
         <listitem>
-          <para>We have to include a plugin-level dependency declaration on
-          our new <varname>web-fragment-descriptor</varname> artifact in order
-          to have access to the assembly descriptor via the plugin’s
-          classpath.</para>
+          <para>这里必须包含一个插件级别依赖声明，只有依赖了web-fragment-descriptor构件之后我们才能通过插件classpath访问套件描述符。</para>
         </listitem>
 
         <listitem>
-          <para>Since we’re using a classpath reference instead of a file in
-          the local project directory structure, we must use the
-          <sgmltag>descriptorRefs</sgmltag> section instead of the
-          <sgmltag>descriptor</sgmltag> section. Also, notice that, while the
-          assembly descriptor is actually in the
-          <filename>assemblies/web-fragment.xml</filename> location within the
-          plugin’s classpath, we reference it without the
-          <filename>assemblies/</filename> prefix. This is because the
-          Assembly plugin assumes that built-in assembly descriptors will
-          always reside in the classpath under this path prefix.</para>
+          <para>由于我们使用classpath引用，而非本地项目目录结构的文件，我们就必须使用descriptorRefs元素，而非descriptor。还有要注意的是，虽然套件描述符实际上是位于插件classpath的assemblies/web-fragment.xml位置，但我们这里引用的时候没有写明assemblies/前缀。这是因为Assembly插件假设所有内置的套件描述符都永远位于classpath下的该前缀位置下。</para>
         </listitem>
       </itemizedlist>
 
-      <para>Now, you’re free to reuse the <acronym>POM</acronym> configuration
-      above in as many projects as you like, with the assurance that all of
-      their web-fragment assemblies will turn out the same. As you need to
-      make adjustments to the assembly format - maybe to include other
-      resources, or to fine-tune the dependency and file sets - you can simply
-      increment the version of the assembly descriptor’s project, and release
-      it again. <acronym>POM</acronym>s referencing the assembly-descriptor
-      artifact can then adopt this new version of the descriptor as they are
-      able.</para>
+      <para>现在，你可以随意的在任何多个项目中重用这部分POM配置，并能确保它们所有的web-fragment套件是相似的。可能你需要调整套件格式——可能是为了包含其它资源，或者为了微调依赖和文件集合——你可以提升套件描述符项目的版本，然后再次发布。引用该套件描述符的POM就可以使用新的版本来生效。</para>
 
-      <para>One final point about assembly-descriptor reuse: you may want to
-      consider sharing the plugin configuration itself as well as publishing
-      the descriptor as an artifact. This is a fairly simple step; you simply
-      add the configuration listed above to the
-      <sgmltag>pluginManagement</sgmltag> section of your parent
-      <acronym>POM</acronym>, then reference the managed plugin configuration
-      from your module <acronym>POM</acronym> like this:</para>
+      <para>关于套件描述符重用最后一点：你可能不仅仅想要将描述符发布成一个构件，你还希望共享插件配置。这很简单；只要将上述的插件配置放到父POM的pluginManagement元素中，然后在子模块的POM中如下引用这段插件配置：</para>
 
       <programlisting language="xml">(...)
   &lt;build&gt;
@@ -2071,43 +1416,17 @@ doesn't make sense to new users.-->
       &lt;/plugin&gt;
 (...)</programlisting>
 
-      <para>If you’ve added the rest of the plugin’s configuration - listed in
-      the previous example - to the <sgmltag>pluginManagement</sgmltag>
-      section of the project’s parent POM, then each project inheriting from
-      that parent <acronym>POM</acronym> can add a minimal entry like the one
-      above and take advantage of an advanced assembly format in their own
-      builds.</para>
+      <para>如果你已经将前面的插件配置放到了父POM中的pluginManagement中，那么所有继承该POM的项目就可以使用如上最少的配置，正确的引用套件描述符，实现我们自定义的高级的套件格式。</para>
     </section>
 
     <section>
-      <title>Distribution (Aggregating) Assemblies</title>
+      <title>分发（聚合）套件</title>
 
-      <para>As mentioned above, the Assembly plugin provides multiple ways of
-      creating many archive formats. Distribution archives are typically very
-      good examples of this, since they often combine modules from a
-      multi-module build, along with their dependencies and possibly, other
-      files and artifacts besides these. The distribution aims to include all
-      these different sources into a single archive that the user can
-      download, unpack, and run with convenience. However, we also examined
-      some of the potential drawbacks of using the
-      <sgmltag>moduleSets</sgmltag> section of the assembly descriptor -
-      namely, that the parent-child relationships between
-      <acronym>POM</acronym>s in a build can prevent the availability of
-      module artifacts in some cases.</para>
+      <para>正如之前提到的，Assembly插件提供很多种方式来创建不同的归档格式。分发包是一个典型的例子，因为它们通常结合了多模块构建的多个模块，还有它们的依赖，以及可能还有除此之外的其它文件和构件。分发包的目的是将所有不同的代码，资源，文件包裹到一个单独的归档中，供用户方便的下载，拆解，运行。然而，我们也提到了一些使用套件描述符moduleSets元素的缺点——那就是POM之间的父子关系在某些情况会使子模块构件不可用。</para>
 
-      <para>Specifically, if module <acronym>POM</acronym>s reference as their
-      parent the <acronym>POM</acronym> that contains the Assembly-plugin
-      configuration, that parent project will be built ahead of the module
-      projects when the multi-module build executes. The parent’s assembly
-      expects to find artifacts in place for its modules, but these module
-      projects are waiting on the parent itself to finish building, a gridlock
-      situation is reached and the parent build cannot succeed (since it’s
-      unable to find artifacts for its module projects). In other words, the
-      child project depends on the parent project which in turn depends on the
-      child project.</para>
+      <para>具体的说，如果子模块POM引用的父项目包含了一段Assembly插件配置，在多模块构建运行的时候，这个父项目会在子模块之前被构建。但是父项目运行Assembly的时候会去寻找子模块的构件，而子模块项目还在等待父项目完整构建，这就造成了一个僵持的局面，父项目也就无法成功构建（因为它无法找到需要的子模块构件）。换句话说，子项目依赖于父项目，而父项目同时又依赖于子项目。</para>
 
-      <para>As an example, consider the assembly descriptor below, designed to
-      be used from the top-level project of a multi-module hierarchy:</para>
+      <para>作为一个例子，考虑如下的套件描述符，在一个多模块结构的顶层项目中使用：</para>
 
       <programlisting language="xml">&lt;assembly&gt;
   &lt;id&gt;distribution&lt;/id&gt;
@@ -2148,10 +1467,8 @@ doesn't make sense to new users.-->
   &lt;/moduleSets&gt;
 &lt;/assembly&gt;</programlisting>
 
-      <para>Given a parent project - called app-parent - with three modules
-      called <varname>app-core</varname>, <varname>app-web</varname>, and
-      <varname>app-addons</varname>, notice what happens when we try to
-      execute this multi-module build:</para>
+      <para>基于这个父项目——叫做app-parent——它带有三个模块，分别为app-core, app-web,
+      和app-addons，注意当我们运行这个多模块构建的时候发生了什么：</para>
 
       <screen>$ <command>mvn package</command>
 [INFO] Reactor build order: 
@@ -2175,60 +1492,19 @@ org.sonatype.mavenbook.assemblies:app-web:jar:1.0-SNAPSHOT (included by module) 
   generated.
 ...</screen>
 
-      <para>The parent project - <varname>app-parent</varname> - builds first.
-      This is because each of the other projects lists that
-      <acronym>POM</acronym> as its parent, which causes it to be forced to
-      the front of the build order. The <varname>app-web</varname> module,
-      which is the first module to be processed in the assembly descriptor,
-      hasn’t been built yet. Therefore, it has no artifact associated with it,
-      and the assembly cannot succeed.</para>
+      <para>父项目——app-parent——首先构建。这时因为所有其它项目都将其引用成父项目，从而使得它必须在所有其它项目之前构建。而app-web模块，套件描述符中第一个要处理的模块，还没有被构建。因此，它就没有相关的构件，因此整个装配就无法成功。</para>
 
-      <para>One workaround for this is to remove the executions section of the
-      Assembly-plugin declaration, that binds the plugin to the
-      <varname>package</varname> lifecycle phase in the parent
-      <acronym>POM</acronym>, keeping the configuration section intact. Then,
-      execute Maven with two command-line tasks: the first,
-      <varname>package</varname>, to build the multi-module project graph, and
-      a second, <varname>assembly:assembly</varname>, as a direct invocation
-      of the assembly plugin to consume the artifacts built on the previous
-      run, and create the distribution assembly. The command line for such a
-      build might look like this:</para>
+      <para>对于这种情形的一个临时解决办法是从Assembly插件声明中移除executions部分配置，这部分配置将插件绑定到父POM的package生命周期阶段，保持其它的配置不变。然后，分别运行两个Maven命令行任务：首先，package，构件整个多模块项目，然后，再运行assembly:assembly，直接调用Assembly插件，这时能够使用到之前运行输出的构件，并创建出分发套件。这样一个构建的命令行如下：</para>
 
       <screen>$ <command>mvn package assembly:assembly</command></screen>
 
-      <para>However, this approach has several drawbacks. First, it makes the
-      distribution-assembly process more of a manual task that can increase
-      the complexity and potential for error in the overall build process
-      significantly. Additionally, it could mean that attached artifacts -
-      which are associated in memory as the project build executes - are not
-      reachable on the second pass without resorting to file-system
-      references.</para>
+      <para>然而，这种方式有几个缺陷。首先，它使得套件分发过程变成了一个更手动的工作，对于整个构建过程，很大程度上这增加了复杂度，且会带来一些潜在的错误。此外，这也意味着如果不使用文件系统引用，那么附属构件——当项目构建运行的时候关联在内存中——也就无法再次被使用。</para>
 
-      <para>Instead of using a <sgmltag>moduleSet</sgmltag> to collect the
-      artifacts from your multi-module build, it often makes more sense to
-      employ a low-tech approach: using a dedicated distribution project
-      module and inter-project dependencies. In this approach, you create a
-      new module in your build whose sole purpose is to assemble the
-      distribution. This module <acronym>POM</acronym> contains dependency
-      references to all the other modules in the project hierarchy, and it
-      configures the Assembly plugin to be bound the
-      <varname>package</varname> phase of its build lifecycle. The assembly
-      descriptor itself uses the <sgmltag>dependencySets</sgmltag> section
-      instead of the <sgmltag>moduleSets</sgmltag> section to collect module
-      artifacts and determine where to include them in the resulting assembly
-      archive. This approach escapes the pitfalls associated with the
-      parent-child relationship discussed above, and has the additional
-      advantage of using a simpler configuration section within the assembly
-      descriptor itself to do the job.</para>
+      <para>除了使用moduleSet来收集多模块构建中的所有构件，通常还有一种更好的的做法：使用一个专门的分发包项目模块，并利用模块间依赖。在这种方式中，你首先在你的构建中创建一个专门来出来装配分发包的模块。这个模块的POM包含了对所有其它模块的依赖，且配置了Assembly插件绑定到其package生命周期阶段。而套件描述符就使用dependencySets元素来取代moduleSets，以收集所有模块构件并决定它们在套件归档中的位置。这种方式避开了前面讲述的关于父子关系的陷阱，现在只需要在套件描述符中使用更简单的配置来完成我们的工作。</para>
 
-      <para>To do this, we can create a new project structure that’s very
-      similar to the one used for the module-set approach above, with the
-      addition of a new distribution project, we might end up with five
-      <acronym>POM</acronym>s in total: <varname>app-parent</varname>,
-      <varname>app-core</varname>, <varname>app-web</varname>,
-      <varname>app-addons</varname>, and <varname>app-distribution</varname>.
-      The new <varname>app-distribution</varname> <acronym>POM</acronym> looks
-      similar to the following:</para>
+      <para>为此，我们可以创建一个新的项目结构，它与我们之间模块集合使用的方式类似，只是需要一个额外的分发项目，我们最终需要五个POM：app-parent,
+      app-core, app-web, app-addons,
+      以及app-distribution。新的app-deistribution的POM如下：</para>
 
       <programlisting language="xml">&lt;project&gt;
   &lt;parent&gt;
@@ -2263,17 +1539,9 @@ org.sonatype.mavenbook.assemblies:app-web:jar:1.0-SNAPSHOT (included by module) 
 &lt;/project&gt;
 </programlisting>
 
-      <para>Notice that we have to include dependencies for the other modules
-      in the project structure, since we don’t have a modules section to rely
-      on in this <acronym>POM</acronym>. Also, notice that we’re not using an
-      explicit dependency on <varname>app-core</varname>. Since it’s also a
-      dependency of <varname>app-web</varname>, we don’t need to process it
-      (or, avoid processing it) twice.</para>
+      <para>注意由于现在的POM中不再能够使用模块集合，我们必须包含项目结构中对于其它模块的依赖。还要注意的是，我们这里没有显式的声明对于app-core的依赖，这时由于我们已经依赖的app-web，app-core已经通过传递性依赖的方式引入。</para>
 
-      <para>Next, when we move the <filename>distro.xml</filename> assembly
-      descriptor into the <varname>app-distribution</varname> project, we must
-      also change it to use a <sgmltag>dependencySets</sgmltag> section, like
-      this:</para>
+      <para>接着，当我们将distro.xml套件描述符移到app-distribution项目中时，我们需要使用dependencySets元素对其进行修改，如：</para>
 
       <programlisting language="xml">&lt;assembly&gt;
   ...
@@ -2298,8 +1566,7 @@ org.sonatype.mavenbook.assemblies:app-web:jar:1.0-SNAPSHOT (included by module) 
 &lt;/assembly&gt;
 </programlisting>
 
-      <para>This time, if we run the build from the top-level project
-      directory, we get better news:</para>
+      <para>现在，如果我们从项目顶层运行构建，就能看到更好的结果：</para>
 
       <screen>$ <command>mvn package</command>
 (...)
@@ -2320,29 +1587,16 @@ org.sonatype.mavenbook.assemblies:app-web:jar:1.0-SNAPSHOT (included by module) 
 [INFO] Final Memory: 16M/29M
 [INFO] ---------------------------------------------------------------</screen>
 
-      <para>As you can see, the dependency-set approach is much more stable
-      and - at least until Maven’s internal project-sorting logic catches up
-      with the Assembly plugin’s capabilities, - involves less opportunity to
-      get things wrong when running a build.</para>
+      <para>正如你所看到的，使用依赖集合的方式更可靠，并且在运行构建的时候出错的几率更低——至少在Maven的内部项目构建排序逻辑还没有赶上Assembly插件的功能之前是这样。</para>
     </section>
   </section>
 
   <section>
-    <title>Summary</title>
+    <title>总结</title>
 
-    <para>As we’ve seen in this chapter, the Maven Assembly plugin offers
-    quite a bit of potential for creating custom archive formats. While the
-    details of these assembly archives can be complex, they certainly don’t
-    have to be in all cases - as we saw with built-in assembly descriptors.
-    Even if your aim is to include your project’s dependencies and selected
-    project files in some unique, archived directory structure, writing a
-    custom assembly descriptor doesn’t have to be an arduous task.</para>
+    <para>如你在本章所看到的，Maven
+    Assembly插件为创建自定义归档格式提供了很多可能性。虽然归档格式的细节可以十分复杂，但显然不是所有情况都这样，因此我们提供了一些内置的套件描述符。即使你的目标是以某种独特的目录结构来包含项目的依赖，选择项目文件，编写一个定制的套件描述符也不是太费力的事情。</para>
 
-    <para>Assemblies are useful for a wide array of applications, but are most
-    commonly used as application distributions of various sorts. And, while
-    there are many different ways to use the Assembly plugin, using
-    standardized assembly-descriptor artifacts and avoiding
-    <sgmltag>moduleSets</sgmltag> when creating distributions containing
-    binaries are two sure ways to avoid problems.</para>
+    <para>套件对于很多应用都十分有用，但最有用的地方还是各种应用程序分发包。虽然使用Assembly插件有很多不同的方法，但在创建包含字节码的分发包时，使用标准化的套件描述符构件，同时避免使用moduleSets，是避免问题的两种很可靠的方法。</para>
   </section>
 </chapter>
