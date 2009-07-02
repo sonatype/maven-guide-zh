@@ -2,63 +2,50 @@
 <!DOCTYPE preface PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <preface id="preface-copyright" role="copyrightpg">
-  <title>Copyright</title>
+  <title>版权</title>
 
   <para>Copyright © 2008 Sonatype, Inc.</para>
 
-  <para>Online version published by Sonatype, Inc., 654 High Street, Suite
-  220, Palo Alto, CA, 94301.</para>
+  <para>在线版本由Sonatype, Inc.发布, 654 High Street, Suite 220, Palo Alto, CA,
+  94301.</para>
 
-  <para>Print version published by O’Reilly Media, Inc., 1005 Gravenstein
-  Highway North, Sebastopol, CA 95472.</para>
+  <para>印刷版本由O’Reilly Media, Inc.发布, 1005 Gravenstein Highway North,
+  Sebastopol, CA 95472.</para>
 
-  <para>Nutshell Handbook, the Nutshell Handbook logo, and the O’Reilly logo
-  are registered trademarks of O’Reilly Media, Inc. The <emphasis>Developer's
-  Notebook</emphasis> series designations, the look of a laboratory notebook,
-  and related trade dress are trademarks of O’Reilly Media, Inc.</para>
+  <para>Nutshell Handbook, the Nutshell Handbook logo, and the O’Reilly
+  logo是O’Reilly Media, Inc.注册的商标. The <emphasis>Developer's
+  Notebook</emphasis>系列命名, 实验室手册视觉外观，以及相关的商业外观是O’Reilly Media, Inc.的商标。</para>
 
-  <para>Java™ and all Java-based trademarks and logos are trademarks or
-  registered trademarks of Sun Microsystems, Inc., in the United States and
-  other countries. Many of the designations used by manufacturers and sellers
-  to distinguish their products are claimed as trademarks. Where those
-  designations appear in this book, and Sonatype, Inc. was aware of a
-  trademark claim, the designations have been printed in caps or initial
-  caps.</para>
+  <para>Java™和所有基于Java的商标及logo都是Sun Microsystems,
+  Inc.的商标或者在美利坚合众国和其它国家的注册商标。很多制造商和销售商用来区分其产品的命名都称之为商标。本书中这些命名出现的地方，以及Sonatype,
+  Inc.，作为商标声明，所有这些命名都以大写的方式或者首字母大写的方式打印。</para>
 
-  <para>While every precaution has been taken in the preparation of this book,
-  the publisher and authors assume no responsibility for errors or omissions,
-  or for damages resulting from the use of the information contained
-  herein.</para>
+  <para>虽然在准备本书的过程中采取了很多预防措施，但是，如果由于使用本书包含信息导致破坏性后果，出版商和作者不对错误和疏忽承担责任。</para>
 
   <section>
     <title>Creative Commons BY-ND-NC</title>
 
-    <para>This work is licensed under a Creative Commons
-    Attribution-Noncommercial-No Derivative Works 3.0 United States license.
-    For more information about this license, see <ulink
-    url="http://creativecommons.org/licenses/by-nc-nd/3.0/us/">http://creativecommons.org/licenses/by-nc-nd/3.0/us/</ulink>.
-    You are free to share, copy, distribute, display, and perform the work
-    under the following conditions:</para>
+    <para>本作品使用Creative Commons Attribution-Noncommercial-No Derivative Works
+    3.0 United States许可证。要了解更多关于该许可证的信息，请访问<ulink
+    url="http://creativecommons.org/licenses/by-nc-nd/3.0/us/">http://creativecommons.org/licenses/by-nc-nd/3.0/us/</ulink>。你可以在遵循以下条件的前提下，自由的共享，复制，分发，显示，以及传递该作品：</para>
 
     <itemizedlist>
       <listitem>
-        <para>You must attribute the work to Sonatype, Inc. with a link to
-        <ulink
-        url="http://www.sonatype.com">http://www.sonatype.com</ulink>.</para>
+        <para>你必须使用链接<ulink
+        url="http://www.sonatype.com">http://www.sonatype.com</ulink>注明这是Sonatype,
+        Inc.的作品。</para>
       </listitem>
 
       <listitem>
-        <para>You may not use this work for commercial purposes.</para>
+        <para>你不可以将该作品用于商业用途。</para>
       </listitem>
 
       <listitem>
-        <para>You may not alter, transform, or build upon this work.</para>
+        <para>你不可以更改，转换该作品，不可以基于该作品进一步创作。</para>
       </listitem>
     </itemizedlist>
 
-    <para>If you redistribute this work on a web page, you must include the
-    following link with the URL in the about attribute listed on a single line
-    (remove the backslashes and join all URL parameters):</para>
+    <para>如果你要在web页面上再次分发该作品，你必须包含如下的链接，并且在将关于著作人的URL单独列成一行（移除所有反斜杠然后连接所有URL参数）：</para>
 
     <programlisting>&lt;div xmlns:cc="http://creativecommons.org/ns#" 
      about="http://creativecommons.org/license/results-one?q_1=2&amp;q_1=1\
@@ -74,23 +61,16 @@
      CC BY-NC-ND 3.0&lt;/a&gt;
 &lt;/div&gt;</programlisting>
 
-    <para>When downloaded or distributed in a jurisdiction other than the
-    United States of America, this work shall be covered by the appropriate
-    ported version of Creative Commons Attribution-Noncommercial-No Derivative
-    Works 3.0 license for the specific jurisdiction. If the Creative Commons
-    Attribution-Noncommercial-No Derivative Works version 3.0 license is not
-    available for a specific jurisdiction, this work shall be covered under
-    the Creative Commons Attribution-Noncommercial-No Derivate Works version
-    2.5 license for the jurisdiction in which the work was downloaded or
-    distributed. A comprehensive list of jurisdictions for which a Creative
-    Commons license is available can be found on the Creative Commons
-    International web site at <ulink
-    url="http://creativecommons.org/international">http://creativecommons.org/international</ulink>.</para>
+    <para>当在美利坚合众国之外的范围内下载到或者分发到该作品是，该作品需要由合适的Creative Commons
+    Attribution-Noncommercial-No Derivative Works
+    3.0许可证移植版本保护。如果在该辖区内没有可用的Creative Commons Attribution-Noncommercial-No
+    Derivative Works 3.0许可证，该作品应该受提供下载或者分发所在辖区的Creative Commons
+    Attribution-Noncommercial-No Derivative Works 3.0许可证移植版本保护。关于Creative
+    Commons可用的辖区完整列表可以在Creative Commons的国际站点找到：<ulink
+    url="http://creativecommons.org/international">http://creativecommons.org/international</ulink>。</para>
 
-    <para>If no ported version of the Creative Commons license exists for a
-    particular jurisdiction, this work shall be covered by the generic,
-    unported Creative Commons Attribution-Noncommercial-No Derivative Works
-    version 3.0 license available from <ulink
-    url="http://creativecommons.org/licenses/by-nc-nd/3.0/">http://creativecommons.org/licenses/by-nc-nd/3.0/</ulink>.</para>
+    <para>如果在某个特定的辖区没有Creative Commons许可证的移植版本，该作品应当受通用的，未移植的Creative Commons
+    Attribution-Noncommercial-No Derivative Works version 3.0许可证保护，见<ulink
+    url="http://creativecommons.org/licenses/by-nc-nd/3.0/">http://creativecommons.org/licenses/by-nc-nd/3.0/</ulink>。</para>
   </section>
 </preface>
