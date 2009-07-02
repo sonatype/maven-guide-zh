@@ -2,29 +2,25 @@
 <!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <appendix id="appendix-enterprise">
-  <title>Appendix: Sun Specification Alternatives</title>
+  <title>附录: Sun规格说明可选实现</title>
 
-  <para>The Apache Geronimo project maintains implementations of various
-  enterprise Java specifications. <xref linkend="table-spec-alternatives" />
-  lists the artifactId and artifact version for all of the specifications
-  implemented by the Geronimo project. To use one of these dependencies, use a
-  groupId of <varname>org.apache.geronimo.specs</varname>, locate the version
-  of the Specification you want to use and reference the dependency with the
-  Artifact Id and Artifact Version listed in <xref
-  linkend="table-spec-alternatives" />.</para>
+  <para>Apache Geronimo项目维护了各种企业级Java规格说明的实现。<xref
+  linkend="table-spec-alternatives" />列出了所有实现的构件id和版本。要使用这些依赖，使用groupId
+  <varname>org.apache.geronimo.specs</varname>，找到你想要使用的规格说明版本，然后使用<xref
+  linkend="table-spec-alternatives" />中列出的构件id和构件版本来指向相应的依赖。</para>
 
   <note>
-    <para>All artifacts in <xref linkend="table-spec-alternatives" />, have a
-    groupId of <varname>org.apache.geronimo.specs</varname>.</para>
+    <para>所有<xref
+    linkend="table-spec-alternatives" />中的构件，都拥有同样的groupId：<varname>org.apache.geronimo.specs</varname>。</para>
   </note>
 
   <table id="table-spec-alternatives">
-    <title>Alternate Spec Implementations Artifacts</title>
+    <title>规格说明的可选实现构件</title>
 
     <tgroup cols="4">
       <colspec colwidth="3*" />
 
-      <colspec colwidth="1*" />
+      <colspec colwidth="2*" />
 
       <colspec colwidth="6*" />
 
@@ -32,13 +28,13 @@
 
       <thead>
         <row>
-          <entry>Specification</entry>
+          <entry>规格说明</entry>
 
-          <entry>Spec Version</entry>
+          <entry>规格说明版本</entry>
 
-          <entry>Artifact Id</entry>
+          <entry>构件id</entry>
 
-          <entry>Artifact Version</entry>
+          <entry>构件版本</entry>
         </row>
       </thead>
 
@@ -387,20 +383,16 @@
   </table>
 
   <note>
-    <para>The version numbers in the Artifact Version column may be out of
-    date by the time you read this book. To check on the version number, visit
-    <ulink
-    url="http://repo1.maven.org/maven2/org/apache/geronimo/specs/">http://repo1.maven.org/maven2/org/apache/geronimo/specs/</ulink>
-    in a web browser, and click on the artifactId you want to add. Choose the
-    highest version of the spec you want to depend upon.</para>
+    <para>在你阅读本书的时候，构件版本一列中的版本号可能已经过时了。你可以访问<ulink
+    url="http://repo1.maven.org/maven2/org/apache/geronimo/specs/">http://repo1.maven.org/maven2/org/apache/geronimo/specs/</ulink>以检查最新的版本号，点击你想要添加的artifactId。选择你想依赖的规格说明的最高版本号。</para>
   </note>
 
-  <para>To illustrate how one would use <xref
-  linkend="table-spec-alternatives" />, if we wanted to write some code in our
-  project which interacted with the <acronym>JTA</acronym> 1.0.1B
-  specification, we would need to add the following dependency to our
-  project:<example>
-      <title>Adding JTA 1.0.1B to a Maven Project</title>
+  <para>这里展示一下如何使用<xref
+  linkend="table-spec-alternatives" />，如果你项目中有一些代码需要和<acronym>JTA</acronym>
+  1.0.1B规格说明打交道，你就需要往项目中添加如下的依赖：</para>
+
+  <para><example>
+      <title>添加JTA 1.0.1B到项目中</title>
 
       <programlisting language="xml">&lt;dependency&gt;
   &lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
@@ -409,10 +401,5 @@
 &lt;/dependency&gt;</programlisting>
     </example></para>
 
-  <para>Notice how the version of the artifact isn't going to line up with the
-  version of the specification—the previous dependency configuration adds
-  version 1.0.1B of the JTA specification using the artifact version of 1.1.1.
-  Be aware of this when depending on the alternate Geronimo implementations,
-  and always double check that you are using the latest artifact version
-  number for your specifications.</para>
+  <para>注意到构件的版本和规格说明的版本并不一致——这里的依赖配置添加了JTA规格说明的1.0.1B版本，但使用的构件版本是1.1.1。在依赖于Geronimo可选实现的时候要意识到这一点，同时一定要确保你使用了该规格说明最新的构件版本号。</para>
 </appendix>
