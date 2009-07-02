@@ -2,169 +2,120 @@
 <!DOCTYPE preface PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <preface id="preface-1">
-  <title>Preface</title>
+  <title>序</title>
 
-  <para>Maven is a build tool, a project management tool, an abstract
-  container for running build tasks. It is a tool that has shown itself
-  indispensable for projects that graduate beyond the simple and need to start
-  finding consistent ways to manage and build large collections of
-  interdependent modules and libraries which make use of tens or hundreds of
-  third-party components. It is a tool that has removed much of the burden of
-  3rd party dependency management from the daily work schedule of millions of
-  engineers, and it has enabled many organizations to evolve beyond the toil
-  and struggle of build management into a new phase where the effort required
-  to build and maintain software is no longer a limiting factor in software
-  design.</para>
+  <para>Maven是一种构建工具，一种项目管理工具，一种用来运行构建任务的抽象容器。对于那些成熟的，希望用一致的方式来管理和构建大量相互依赖的模块和类库，并且使用了数千第三方组件的项目来说，Maven已经证明了它是一个不可缺少的工具。它帮助数百万的工程师从日常工作中减轻维护第三方依赖的负担，它帮助很多组织从构建管理的泥潭中挣脱出来，步入新的台阶，构建和维护软件所需要的工作不再是限制软件设计的因素。</para>
 
-  <para>This work is the first attempt at a comprehensive title on Maven. It
-  builds upon the combined experience and work of the authors of all previous
-  Maven titles, and you should view it not as a finished work but a the first
-  edition in a long line of updates to follow. While Maven has been around for
-  a few years, the authors of this book believe that it has just begun to
-  deliver on the audacious promises it makes. The authors, and company behind
-  this book, <ulink url="http://www.sonatype.com">Sonatype</ulink>, believe
-  that the publishing of this book marks the beginning of a new phase of
-  innovation and development surrounding Maven and the software ecosystem that
-  surrounds it.</para>
+  <para>本书首次尝试来全面解释Maven这一主题。它结合了所有之前Maven书籍作者的经验和工作，并且这还不是最终的结果，目前只是第一个版本而已，以后还会有更多的更新。虽然Maven已经出现有很多年了，但本书的作者们相信它还仅仅是刚开始兑现自己做的大胆的承诺。所有的作者，以及本书后面的公司，<ulink
+  url="http://www.sonatype.com">Sonatype</ulink>，相信本书的出版标志着围绕Maven变革和开发，以及其周围软件生态系统的一个新的阶段的开始。</para>
 
   <section>
-    <title>How to Use this Book</title>
+    <title>如何使用本书</title>
 
-    <para>Pick it up, read some of the text on the pages. Once you reach the
-    end of a page, you'll want to either click on a link if you are looking at
-    the <acronym>HTML</acronym> version, or, if you have the printed book,
-    you'll lift up a corner of a page and turn it. If you are sitting next to
-    a computer, you can type in some of the examples and try to follow along.
-    Please don't throw a book this large at anyone in anger.</para>
+    <para>拿起本书，随便翻阅浏览一下。读完了一页之后，如果你在阅读HTML版本，你可以点击链接到下一页，或者，如果你有纸质书，你会往下翻。如果你在电脑旁，你可以输入一些例子，跟随作者深入理解概念。但是，请不要在你生气的时候将这么大的一本书砸向任何一个人。</para>
 
-    <para>This book is divided into three parts: Introductory Material, <xref
-    linkend="part-example" />, and <xref linkend="part-reference" />. The
-    introductory material consists of two chapters: <xref
-    linkend="introduction" /> and <xref linkend="installation" />. <xref
-    linkend="part-example" /> introduces Maven by developing some real
-    examples and walking you through the structure of those examples providing
-    motivation and explanation along the way. If you are new to Maven, start
-    with <xref linkend="part-example" />. <xref linkend="part-reference" /> is
-    less introduction than reference, each chapter in <xref
-    linkend="part-reference" /> deals with a focused topic and dives into as
-    much detail as possible about each topic. For example, the <xref
-    linkend="writing-plugins" /> chapter in <xref linkend="part-reference" />
-    deals with writing plugins by providing a few examples and a series of
-    lists and tables.</para>
+    <para>本书分成了三个部分：介绍性内容，<xref linkend="part-example" />，和<xref
+    linkend="part-reference" />。介绍性内容包括了两章：<xref
+    linkend="introduction" />和<xref linkend="installation" />。<xref
+    linkend="part-example" />开发一些实际的例子，并一步步分析这些例子的结构，同时循循善诱，详细解释，以此来解释Maven。如果你是Maven新手，应该从<xref
+    linkend="part-example" />开始阅读。<xref
+    linkend="part-reference" />更多的是参考而非介绍，<xref
+    linkend="part-reference" />中的每一章集中讨论一个主题，并且会尽可能的深入每个主题的细节。例如，<xref
+    linkend="part-reference" />中的<xref
+    linkend="writing-plugins" />一章通过一些例子和表格解释如何编写插件。</para>
 
-    <para>While both <xref linkend="part-example" /> and <xref
-    linkend="part-reference" /> provide explanation, each part takes a
-    different strategy. Where <xref linkend="part-example" /> focuses on the
-    context of a Maven project, <xref linkend="part-reference" /> focuses on a
-    single topic. You can skip around in the book, <xref
-    linkend="part-example" /> is by no means a prerequisite for <xref
-    linkend="part-reference" />, but you'll have a better appreciation for
-    <xref linkend="part-reference" /> if you read through <xref
-    linkend="part-example" />. Maven is best learned by example, but once
-    you've gone through the examples, you are going to need a good reference
-    to start customizing Maven for your own environment.</para>
+    <para>虽然<xref linkend="part-example" />和<xref
+    linkend="part-reference" />都提供了解释，但每个部分有不同的策略。<xref
+    linkend="part-example" />更关注于Maven项目的上下文，而<xref
+    linkend="part-reference" />更关注于一个单独的主题。你可以跳跃着阅读本书，<xref
+    linkend="part-example" />绝不是<xref
+    linkend="part-reference" />的前提，但是如果你在阅读<xref
+    linkend="part-reference" />之前阅读了<xref
+    linkend="part-example" />，你会有更好的理解。学习Maven最好的方式是通过样例，但是当你完成这些样例之后，你就会需要一些优良的参考资料来帮助你在自己的环境中定制Maven。</para>
   </section>
 
   <section>
-    <title>Your Feedback</title>
+    <title>你的反馈</title>
 
-    <para>We didn't write this book so we could send off a Word document to
-    our publisher and go to a launch party to congratulate ourselves on a job
-    well done. This book isn't "done"; in fact, this book will never be
-    completely "done". The subject it covers is constantly changing and
-    expanding, and we consider this work an ongoing conversation with the
-    community. Publishing the book means that the real work has just begun,
-    and you, as a reader, play a pivotal role to helping to maintain and
-    improve this book. If you see something in this book that is wrong: a
-    spelling mistake, some bad code, a blatant lie, then you should tell us,
-    send us an email at: <ulink
-    url="mailto:tobrien@sonatype.com">book@sonatype.com</ulink>.</para>
+    <para>我们并非在写完本书之后，将一个Word文档扔给我们的出版商，然后举办一个Party来庆祝一项工作的完成。事实上，本书并没有“完成”；本书永远不会完全的“完成”。它所涉及的内容一直在变化，扩展，因此我们将本书的工作看成是一项与社区的持续会话。出版本书意味着真正的工作才开始，而你，我们的读者，扮演了一个很重要的角色，帮助我们完善本书。如果你看到本书的某些地方存在错误：拼写错误，代码错误，或者有明显的谎话，那么请告诉我们，给我们发邮件：<ulink
+    url="mailto:tobrien@sonatype.com">book@sonatype.com</ulink>。</para>
 
     <!--TODO: Change this to mavenbook@sonatype.com when it is available.-->
 
-    <para>The ongoing relevance of this book depends upon your feedback. We
-    want to know what works and what doesn't work. We want to know if there is
-    any information you couldn't understand. We especially want to know if you
-    think that the book is awful. Positive or negative comments are all
-    welcome. Of course, we reserve the right to disagree, but all feedback
-    will be rewarded with a gracious response.</para>
+    <para>本书的进展依赖于你的反馈。我们想知道哪些地方是好的，哪些地方还不够好。我们想知道是否有无法理解的信息。如果你认为本书很糟糕，我们特别的想知道为什么。肯定和否定的意见都是欢迎的。当然，我们保留不认同的权利，但是所有反馈都会得到友好的回复。</para>
   </section>
 
   <section id="section-fontConventions">
-    <title>Font Conventions</title>
+    <title>字体约定<footnoteref linkend="foot-font-conversion" /></title>
 
-    <para>This book follows certain conventions for font usage. Understanding
-    these conventions up-front makes it easier to use this book.</para>
+    <para>本书遵循了一些字体使用的约定。预先理解这些约定能让你更易使用本书。<footnote id="foot-font-conversion">
+        <para>这些约定主要针对于英文版本，中文版可能有不适用的地方。</para>
+      </footnote></para>
 
     <variablelist>
       <varlistentry>
-        <term><emphasis role="italic">Italic</emphasis></term>
+        <term><emphasis role="italic">斜体</emphasis></term>
 
         <listitem>
-          <para>Used for filenames, file extensions, URLs, application names,
-          emphasis, and new terms when they are first introduced.</para>
+          <para>文件名，文件扩展名，URL，应用程序名，强调，以及一些首次介绍的新术语。</para>
         </listitem>
       </varlistentry>
     </variablelist>
 
     <variablelist>
       <varlistentry>
-        <term><literal moreinfo="none">Constant width</literal></term>
+        <term><literal moreinfo="none">等宽</literal></term>
 
         <listitem>
-          <para>Used for Java class names, methods, variables, properties,
-          data types, database elements, and snippets of code that appear in
-          text.</para>
+          <para>Java类名，方法名，变量名，属性，数据类型，数据库元素，以及文字中的代码片段。</para>
         </listitem>
       </varlistentry>
     </variablelist>
 
     <variablelist>
       <varlistentry>
-        <term><emphasis role="bold"> <literal moreinfo="none">Constant width
-        bold</literal> </emphasis></term>
+        <term><emphasis role="bold">等宽粗体</emphasis></term>
 
         <listitem>
-          <para>Used for commands you enter at the command line and to
-          highlight new code inserted in a running example.</para>
+          <para>命令行输入的命令，以及用来标亮插入到运行样例中的代码。</para>
         </listitem>
       </varlistentry>
     </variablelist>
 
     <variablelist>
       <varlistentry>
-        <term><emphasis role="italic"> <literal moreinfo="none">Constant width
-        italic</literal> </emphasis></term>
+        <term><emphasis role="italic">等宽斜体</emphasis></term>
 
         <listitem>
-          <para>Used to annotate output.</para>
+          <para>用来标注输出。</para>
         </listitem>
       </varlistentry>
     </variablelist>
   </section>
 
   <section>
-    <title>Maven Writing Conventions</title>
+    <title>Maven书写约定<footnoteref
+    linkend="foot-font-maven-conversion" /></title>
 
-    <para>The book follows certain conventions for naming and font usage in
-    relation to Apache Maven. Understanding these conventions up-front makes
-    it easier to read this book.</para>
+    <para>本书遵循一些与Apache Maven相关的命名和字体使用约定。同样，预先理解这些预定能让让你更易阅读本书。<footnote
+        id="foot-font-maven-conversion">
+        <para>这些约定主要针对于英文版本，中文版可能有不适用的地方。</para>
+      </footnote></para>
 
     <variablelist>
       <varlistentry>
-        <term>Compiler plugin</term>
+        <term>Compiler插件</term>
 
         <listitem>
-          <para>Maven plugins are capitalized.</para>
+          <para>Maven插件首字母大写。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><varname>create</varname> goal</term>
+        <term><varname>create</varname>目标</term>
 
         <listitem>
-          <para>Maven goal names are displayed in a constant width
-          font.</para>
+          <para>Maven目标使用等宽字体。</para>
         </listitem>
       </varlistentry>
 
@@ -172,10 +123,7 @@
         <term>"plugin"</term>
 
         <listitem>
-          <para>Maven revolves around the heavy use of plug-ins but you won't
-          find plugin defined in the dictionary. This book writes the term as
-          "plugin" both because it is easier to read and write and because it
-          is a standard throughout the Maven community.</para>
+          <para>Maven大量使用了plug-in这一个概念，但是你会发现plugin没有在字典中定义。本书将该术语写成"plugin"是因为它更易书写和阅读，而且它是Maven社区中的一个标准。</para>
         </listitem>
       </varlistentry>
 
@@ -184,8 +132,7 @@
         Project Object Model</term>
 
         <listitem>
-          <para>Core Maven concepts are capitalized whenever they are being
-          referenced in the text.</para>
+          <para>不管在什么地方出现，核心的Maven概念都首字母大写。</para>
         </listitem>
       </varlistentry>
 
@@ -193,31 +140,26 @@
         <term><varname>goalParameter</varname></term>
 
         <listitem>
-          <para>A Maven goal parameter is displayed in a constant width
-          font.</para>
+          <para>Maven目标参数使用等宽字体。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><varname>compile</varname> phase</term>
+        <term><varname>compile</varname>阶段</term>
 
         <listitem>
-          <para>Lifecycle phases are displayed in a constant width
-          font.</para>
+          <para>生命周期阶段使用等宽字体。</para>
         </listitem>
       </varlistentry>
     </variablelist>
   </section>
 
   <section>
-    <title>Acknowledgements</title>
+    <title>致谢</title>
 
-    <para>Sonatype would like to thank the following contributors. The people
-    listed below have provide feedback which has helped improve the quality of
-    this book. Thanks to Marcus Biel, Brian Dols, Mangalaganesh
-    Balasubramanian, and Mark Stewart. Special thanks to Joel Costigliola for
-    helping to debug and correct the Spring web chapter. Special thanks to
-    Richard Coasby of Bamboo for acting as the provisional grammar
-    consultant.</para>
+    <para>Sonatype要感谢下面的贡献者。下面所列的人给了我们很多反馈，帮助我们提高了本书的质量。感谢Marcus Biel, Brian
+    Dols, Mangalaganesh Balasubramanian, 以及Mark Stewart。特别感谢Joel
+    Costigliola帮助我们调试和纠正Spring web一章。特别感谢来自Bamboo的Richard
+    Coasby作为临时的语法咨询顾问。</para>
   </section>
 </preface>

@@ -59,7 +59,11 @@
       <author>
         <firstname>Juven</firstname>
 
-        <surname>Xu</surname>
+        <surname>Xu（译）</surname>
+
+        <affiliation>
+          <orgname>Sonatype, Inc.</orgname>
+        </affiliation>
       </author>
     </authorgroup>
 
