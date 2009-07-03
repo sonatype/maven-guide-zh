@@ -153,7 +153,7 @@
   </part>
 
   <part id="part-reference">
-    <title>Maven Reference</title>
+    <title>Maven参考</title>
 
     <xi:include href="chapter-pom-relationships.xml"
                 xmlns:xi="http://www.w3.org/2001/XInclude" />

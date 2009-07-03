@@ -16,7 +16,7 @@
     <xsl:param name="callout.extensions">1</xsl:param>
 
     <!-- FOP provide only PDF Bookmarks at the moment -->
-    <xsl:param name="fop.extensions">1</xsl:param>
+    <xsl:param name="fop1.extensions">1</xsl:param>
 
     <!--###################################################
                      Table Of Contents
@@ -72,19 +72,16 @@
     <!-- Line height in body text -->
     <xsl:param name="line-height">1.4</xsl:param>
 
-  <!-- Chinese font related settings -->
-  <xsl:param name="title.font.family">Arial,Calibri,sans-serif,zh_title</xsl:param>
-  <xsl:param name="body.font.family">Times New Roman,Cambria,Cambria Math,serif,zh_text</xsl:param>
-  <xsl:param name="sans.font.family">Arial,Calibri,sans-serif,zh_title</xsl:param>
-  <xsl:param name="dingbat.font.family">Times New Roman,Cambria,Cambria Math,serif,zh_text</xsl:param>
-  <xsl:param name="monospace.font.family">Courier New,monospace,zh_verbatim</xsl:param>
-  <xsl:param name="symbol.font.family">Symbol,ZapfDingbats</xsl:param>
+  <!-- Chinese font related settings -->  
+  <xsl:param name="body.font.family">'serif','SimSun'</xsl:param>
+	<xsl:param name="body.font.master" select="'11'" />
+	<xsl:param name="body.font.small" select="'8'" />
+  <xsl:param name="title.font.family">'SimSun'</xsl:param>
+  <xsl:param name="monospace.font.family">'monospace','SimSun'</xsl:param>
+	<xsl:param name="dingbat.font.family" select="''" />
+	<xsl:param name="symbol.font.family" select="''" />
 
-  <xsl:param name="title.fontset">Arial,Calibri,sans-serif,Symbol,ZapfDingbats,zh_title</xsl:param>
-  <xsl:param name="body.fontset">Times New Roman,Cambria,Cambria Math,serif,Symbol,ZapfDingbats,zh_text</xsl:param>
 
-	<xsl:param name="body.font.master" select="'14'" />
-	<xsl:param name="body.font.small" select="'11'" />
 	<xsl:param name="double.sided" select="'0'" />
 
 	<xsl:attribute-set name="normal.para.spacing">
