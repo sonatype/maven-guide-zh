@@ -2,7 +2,7 @@
 <!DOCTYPE preface PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <preface id="preface-1">
-  <title>序</title>
+  <title>前言</title>
 
   <para>Maven是一种构建工具，一种项目管理工具，一种用来运行构建任务的抽象容器。对于那些成熟的，希望用一致的方式来管理和构建大量相互依赖的模块和类库，并且使用了数千第三方组件的项目来说，Maven已经证明了它是一个不可缺少的工具。它帮助数百万的工程师从日常工作中减轻维护第三方依赖的负担，它帮助很多组织从构建管理的泥潭中挣脱出来，步入新的台阶，构建和维护软件所需要的工作不再是限制软件设计的因素。</para>
 
