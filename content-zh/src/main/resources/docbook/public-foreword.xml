@@ -2,33 +2,49 @@
 <!DOCTYPE preface PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <preface id="public-forward">
-  <title>Foreword: Beta 0.16</title>
+  <title>序: Beta 0.2</title>
 
-  <para>Alright, we're in a Beta release now. What does this mean? Not much,
-  really it just means that I no longer feel like we're going to have massive
-  structural changes between now and the 1.0 release of this book. We might
-  have another chapter added into the mix, we might not. At this point, we're
-  focusing on clarity and completeness of what we have now, and we're also
-  very much focused on limiting the size and scope of the book.</para>
+  <para>我们现在处于Beta发布阶段。也许你会问这代表了什么，其实这只是说从现在开始到正式1.0版本发布，本书结构不会又太大的变化了。以后可能会有新的章节加入，也可能不会有。目前，我们关注于当前内容的清晰和完整，同时我们也会注意限制本书的大小和范围。</para>
 
-  <para>You'll notice that the Nexus and m2eclipse chapters have been updated
-  in this release and that they both contain a large amount of screenshots.
-  We've been focusing on these chapters as they serve a dual role. While they
-  are chapters in this book, each chapter also serves as documentation for
-  each project.</para>
+  <para>本书中你会看到Nexus和m2eclipse两章拥有大量的内容和快照。为它们花大量气力是因为它们不仅仅是本书的某一章，同时也是自身项目的完整文档。</para>
 
-  <para>We've had some great feedback so far, please keep it coming. Your
-  feedback is greatly appreciated, send it to <ulink
-  url="mailto:book@sonatype.com">book@sonatype.com</ulink>. To keep yourself
-  informed of updates, read the book blog at: <ulink
-  url="http://blogs.sonatype.com/book">http://blogs.sonatype.com/book</ulink>.</para>
+  <para>我们已经获得了关于本书的大量反馈，请不要停止给我们意见和建议，我们将非常感激，请发送至<ulink
+  url="mailto:book@sonatype.com">book@sonatype.com</ulink>。要了解本书的最近更新，关于英文版你可以关注该博客：<ulink
+  url="http://blogs.sonatype.com/book">http://blogs.sonatype.com/book</ulink>；关于中文版你可以关注该博客：<ulink
+  type=""
+  url="http://juvenshun.javaeye.com">http://juvenshun.javaeye.com</ulink>。</para>
 
-  <para>Everyone at Sonatype has had a hand in this version of the book, so
-  the author is officially "Sonatype".</para>
+  <para>本书是开源的，这意味着你可以直接浏览该书的源码，并贡献你的一份力量：</para>
+
+  <itemizedlist>
+    <listitem>
+      <para>中文版源码地址：<ulink
+      url="http://github.com/sonatype/maven-guide-zh/tree/">http://github.com/sonatype/maven-guide-zh/tree/</ulink></para>
+    </listitem>
+
+    <listitem>
+      <para>英文版源码地址：<ulink
+      url="http://github.com/sonatype/maven-guide-en/tree/">http://github.com/sonatype/maven-guide-en/tree/</ulink></para>
+    </listitem>
+  </itemizedlist>
+
+  <para>所有Sonatype的工作人员都为本书做了贡献，因此官方作者是"Sonatype"。</para>
+
+  <para>本书中文版由<ulink url="http://juvenshun.javaeye.com" userlevel="">Juven
+  Xu</ulink>翻译。</para>
 
   <para>Tim O'Brien (tobrien@sonatype.com)</para>
 
   <para>Evanston, IL</para>
 
-  <para>September 1, 2008</para>
+  <para>2008年9月1日</para>
+
+  <para>Juven Xu (juven@sonatype.com)</para>
+
+  <para>中国，苏州</para>
+
+  <para>2009年7曰3日</para>
+
+  <para>PS：你已经购买本书的<ulink
+  url="http://www.amazon.com/Maven-Definitive-Guide-Sonatype-Company/dp/0596517335/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1223866448&amp;sr=8-1">英文印刷版本</ulink>了。</para>
 </preface>
