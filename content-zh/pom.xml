@@ -211,7 +211,33 @@
         <sonatype.site>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/</sonatype.site>
         <nexus.book.baseurl>http://books.sonatype.com/nexus-book/</nexus.book.baseurl>
         <m2eclipse.book.baseurl>http://books.sonatype.com/m2eclipse-book/</m2eclipse.book.baseurl>
+	<scribd.doc.id>17573045</scribd.doc.id>
       </properties>
+      <build>
+	<plugins>
+	  <plugin>
+	    <groupId>org.codehaus.cjcook</groupId>
+	    <artifactId>scribd-plugin</artifactId>
+	    <version>1.0</version>
+	    <executions>
+	      <execution>
+		<id>publish-to-scribd</id>
+		<phase>install</phase>
+		<goals>
+		  <goal>publish</goal>
+		</goals>
+		<configuration>
+		  <apiKey>${scribd.api.key}</apiKey>
+		  <docId>${scribd.doc.id}</docId>
+		  <pdf>${basedir}/target/docbkx/pdf/public-book.pdf</pdf>
+		  <access>public</access>
+		  <downloadAndDrm>view-only</downloadAndDrm>
+		</configuration>
+	      </execution>
+	    </executions>
+	  </plugin>
+	</plugins>
+      </build>
     </profile>
     <profile>
       <id>stage-external</id>
@@ -224,7 +250,33 @@
       </distributionManagement>
       <properties>
         <sonatype.site>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/</sonatype.site>
+	<scribd.doc.id>17573066</scribd.doc.id>
       </properties>
+      <build>
+	<plugins>
+	  <plugin>
+	    <groupId>org.codehaus.cjcook</groupId>
+	    <artifactId>scribd-plugin</artifactId>
+	    <version>1.0</version>
+	    <executions>
+	      <execution>
+		<id>publish-to-scribd</id>
+		<phase>install</phase>
+		<goals>
+		  <goal>publish</goal>
+		</goals>
+		<configuration>
+		  <apiKey>${scribd.api.key}</apiKey>
+		  <docId>${scribd.doc.id}</docId>
+		  <pdf>${basedir}/target/docbkx/pdf/public-book.pdf</pdf>
+		  <access>private</access>
+		  <downloadAndDrm>download-pdf</downloadAndDrm>
+		</configuration>
+	      </execution>
+	    </executions>
+	  </plugin>
+	</plugins>
+      </build>
     </profile>
   </profiles>
   <dependencies>
